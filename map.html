@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainable Place Finder Near Princeton</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map { height: 600px; }
+        .container { max-width: 600px; margin: 50px auto; text-align: center; }
+        #search-bar { margin: 10px; padding: 5px; font-size: 16px; width: 80%; }
+        #search-btn { padding: 5px 10px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Find Sustainable Places Near Princeton</h1>
+        <input type="text" id="search-bar" placeholder="Search for food, books, clothes, etc..." />
+        <button id="search-btn" onclick="searchPlaces()">Search</button>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        const OPEN_CAGE_API_KEY = "7b272f66a8dd49b2a16607e8d732d611"; // OpenCage API key
+        const PRINCETON_LAT = 40.3573;  // Latitude for Princeton
+        const PRINCETON_LON = -74.6672; // Longitude for Princeton
+
+        let map = L.map('map').setView([PRINCETON_LAT, PRINCETON_LON], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        // Mock data for sustainable businesses
+        const mockPlaces = [
+            { name: "Princeton Food Market", category: "Food", lat: 40.3561, lon: -74.6622, sustainabilityScore: 7.5 },
+            { name: "Green Grocery Store", category: "Groceries", lat: 40.3585, lon: -74.6591, sustainabilityScore: 8.1 },
+            { name: "Eco-Friendly Clothing", category: "Clothes", lat: 40.3600, lon: -74.6605, sustainabilityScore: 6.9 },
+            { name: "Green Drinks Cafe", category: "Drinks", lat: 40.3570, lon: -74.6610, sustainabilityScore: 8.3 },
+            { name: "Princeton Bookstore", category: "Books", lat: 40.3588, lon: -74.6580, sustainabilityScore: 7.0 },
+            { name: "Tech Gadgets Hub", category: "Gadgets", lat: 40.3590, lon: -74.6635, sustainabilityScore: 7.7 },
+            { name: "Princeton Stationery", category: "Stationery", lat: 40.3578, lon: -74.6640, sustainabilityScore: 6.8 },
+            { name: "Green Toiletries Store", category: "Toiletries", lat: 40.3583, lon: -74.6595, sustainabilityScore: 8.0 },
+        ];
+
+        // Function to search for places based on the search query
+        function searchPlaces() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const filteredPlaces = mockPlaces.filter(place => 
+                place.category.toLowerCase().includes(query) && place.sustainabilityScore >= 7
+            );
+
+            showResults(filteredPlaces);
+        }
+
+        // Function to show results on the map
+        function showResults(places) {
+            // Clear existing markers
+            map.eachLayer(layer => {
+                if (layer instanceof L.Marker) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            // Display filtered places
+            places.forEach(place => {
+                L.marker([place.lat, place.lon])
+                    .addTo(map)
+                    .bindPopup(`
+                        <b>${place.name}</b><br>
+                        Category: ${place.category}<br>
+                        Sustainability Score: ${place.sustainabilityScore.toFixed(2)}
+                    `);
+            });
+
+            // If no results, show the most sustainable place
+            if (places.length === 0) {
+                const mostSustainable = mockPlaces.reduce((prev, curr) => (prev.sustainabilityScore > curr.sustainabilityScore ? prev : curr));
+                showResults([mostSustainable]); // Show the most sustainable place as a fallback
+            }
+        }
+    </script>
+</body>
+</html>
