@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 # Load JSON data
-with open("message.json", "r", encoding="utf-8") as file:
+with open("Mock_data.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
 # Connect to the database
