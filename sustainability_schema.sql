@@ -1,4 +1,3 @@
-
 -- Drop existing tables if needed
 DROP TABLE IF EXISTS purchases;
 DROP TABLE IF EXISTS scores;
@@ -38,23 +37,24 @@ CREATE TABLE leaderboard (
     last_updated TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Store emissions table
 CREATE TABLE store_emissions (
     name TEXT PRIMARY KEY,
     co2_emissions REAL NOT NULL,
     revenue REAL NOT NULL,
     emissions_intensity REAL NOT NULL,
     sustainability_score REAL GENERATED ALWAYS AS (
-        100 - ((emissions_intensity / {baseline_intensity}) * 100)
+        100 - ((emissions_intensity / 0.8) * 100)
     ) STORED
 );
 
+-- Brand emissions table
 CREATE TABLE brand_emissions (
     name TEXT PRIMARY KEY,
     co2_emissions REAL NOT NULL,
     revenue REAL NOT NULL,
     emissions_intensity REAL NOT NULL,
     sustainability_score REAL GENERATED ALWAYS AS (
-        100 - ((emissions_intensity / {baseline_intensity}) * 100)
+        100 - ((emissions_intensity / 0.8) * 100)
     ) STORED
 );
-

@@ -4,6 +4,17 @@ import sqlite3
 # Load Excel file
 df = pd.read_excel("brand_data_hackathon.xlsx", engine="openpyxl")
 
+# # Rename columns to match expected names
+# df.rename(columns={
+#     "Brand": "name",
+#     "Co2 emissions": "co2_emissions",
+#     "Revenue": "revenue",
+#     "Emissions Intensity": "emissions_intensity"
+# }, inplace=True)
+
+for col in ["co2_emissions", "revenue", "emissions_intensity"]:
+    df[col] = df[col].astype(str).str.replace(",", "").astype(float)
+
 # Optional: print preview
 print("📄 Preview of brand emissions data:")
 print(df.head())
@@ -28,4 +39,4 @@ for _, row in df.iterrows():
 conn.commit()
 conn.close()
 
-print("Brand emissions data inserted successfully.")
+print("INSERT_INTO_BRAND Brand emissions data inserted successfully.")

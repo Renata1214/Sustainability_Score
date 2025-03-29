@@ -1,6 +1,8 @@
 import sqlite3
 from collections import defaultdict
 
+print("Main running")
+
 # Connect to the updated database
 conn = sqlite3.connect("sustainability.db")
 cursor = conn.cursor()
