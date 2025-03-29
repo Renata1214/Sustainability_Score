@@ -15,6 +15,7 @@ user_scores = {}
 
 # Step 2: Calculate sustainability score for each user
 for user_id in users:
+   
     total_score = 0
 
     # Fetch all purchases for this user
@@ -35,7 +36,10 @@ for user_id in users:
         brand_score = brand_score_row[0] if brand_score_row else 0
 
         # Add to user's total score
+        #calculating
         total_score += (store_score + brand_score)
+        #print("THE USER TOTAL SCORE WAS ")
+        #print(total_score)
 
     user_scores[user_id] = total_score
 
@@ -46,7 +50,16 @@ leaderboard = sorted(user_scores.items(), key=lambda x: x[1], reverse=True)
 print("🏆 Sustainability Leaderboard")
 print("----------------------------")
 for rank, (user, score) in enumerate(leaderboard, 1):
-    print(f"{rank}. {user} — {score:.2f} points")
+    print(f"{rank}. {user} : {score:.2f} points")
+
+
+# Step 3.5: Save into the leaderboard table
+for user_id, score in user_scores.items():
+    cursor.execute("""
+        INSERT OR REPLACE INTO leaderboard (user_id, total_score)
+        VALUES (?, ?)
+    """, (user_id, score))
+conn.commit()
 
 # Step 4: Track most harmful (lowest scoring) products
 harmful_products = defaultdict(list)

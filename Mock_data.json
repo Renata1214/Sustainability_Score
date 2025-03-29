@@ -4,7 +4,7 @@
         {
         "merchant": {
             "id": 101,
-            "name": "Walmart"
+            "name": "Walmart Inc."
         },
         "transactions": [
             {
@@ -134,7 +134,7 @@
         }, {
         "merchant": {
             "id": 12,
-            "name": "Target"
+            "name": "Target Corporation"
         },
         "transactions": [
             {
@@ -245,7 +245,7 @@
         {
         "merchant": {
             "id": 40,
-            "name": "Instacart"
+            "name": "instacart"
         },
         "transactions": [
             {
@@ -368,7 +368,7 @@
         }, {
         "merchant": {
             "id": 19,
-            "name": "DoorDash"
+            "name": "doordash"
         },
         "transactions": [
             {
@@ -555,7 +555,7 @@
       {
         "merchant": {
           "id": 36,
-          "name": "Uber Eats"
+          "name": "uber eats"
         },
         "transactions": [
           {
@@ -653,7 +653,7 @@
       {
         "merchant": {
           "id": 84,
-          "name": "Airbnb"
+          "name": "airbnb"
         },
         "transactions": [
           {

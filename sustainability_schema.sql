@@ -44,7 +44,7 @@ CREATE TABLE store_emissions (
     revenue REAL NOT NULL,
     emissions_intensity REAL NOT NULL,
     sustainability_score REAL GENERATED ALWAYS AS (
-        100 - ((emissions_intensity / 0.8) * 100)
+        100 - ((emissions_intensity / 501) * 100)
     ) STORED
 );
 
@@ -55,6 +55,6 @@ CREATE TABLE brand_emissions (
     revenue REAL NOT NULL,
     emissions_intensity REAL NOT NULL,
     sustainability_score REAL GENERATED ALWAYS AS (
-        100 - ((emissions_intensity / 0.8) * 100)
+        100 - ((emissions_intensity / 12.61) * 100)
     ) STORED
 );
