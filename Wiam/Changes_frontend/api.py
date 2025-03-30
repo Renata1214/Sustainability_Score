@@ -3,18 +3,21 @@ from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
-#CORS(app, origins=["https://expert-fiesta-6qq9pwq9694frgj4-8081.app.github.dev"])  # 👈 Allow this origin only
-#CORS(app)  # 👈 Allow this origin only
-CORS(app, resources={r"/*": {"origins": "*"}})
 
-@app.route("/leaderboard")
+# 👇 Equivalent to AllowAnyMethod, AllowAnyHeader, any origin, allow credentials
+CORS(app, supports_credentials=True, origins="*")
+
+@app.route("/leaderboard", methods=["GET"])
 def leaderboard():
     conn = sqlite3.connect("/workspaces/Sustainability_Score/sustainability.db")
     cursor = conn.cursor()
     cursor.execute("SELECT user_id, total_score FROM leaderboard ORDER BY total_score DESC")
     rows = cursor.fetchall()
     conn.close()
-    return jsonify([{"user_id": u, "score": s} for u, s in rows])
+
+    return jsonify([
+        {"user_id": user_id, "score": score} for user_id, score in rows
+    ])
 
 @app.route("/")
 def home():
