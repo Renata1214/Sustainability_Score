@@ -21,9 +21,12 @@ scripts = [
     "main.py"
 ]
 
-# 3. Launch each script
-processes = [subprocess.Popen(["python", script]) for script in scripts]
+# # 3. Launch each script
+# processes = [subprocess.Popen(["python", script]) for script in scripts]
 
-# 4. Optional: wait for all to complete
-for p in processes:
-    p.wait()
+# # 4. Optional: wait for all to complete
+# for p in processes:
+#     p.wait()
+for script in scripts:
+    print(f"▶️ Running {script}...")
+    subprocess.run(["python", script], check=True)
