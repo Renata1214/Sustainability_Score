@@ -29,4 +29,5 @@ scripts = [
 #     p.wait()
 for script in scripts:
     print(f"▶️ Running {script}...")
-    subprocess.run(["python", script], check=True)
+    subprocess.run(["python3", script], check=True)
+
