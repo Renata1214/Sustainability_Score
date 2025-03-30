@@ -9,10 +9,10 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  Dimensions,
 } from 'react-native';
 import { Send } from 'lucide-react-native';
 import { getGeminiResponse } from '@/lib/gemini';
-
 
 interface Message {
   id: string;
@@ -22,12 +22,9 @@ interface Message {
 
 export default function ChatScreen() {
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Message[]>([{
-    id: '1',
-    text: "Hello! I'm your AI assistant. How can I help you today?",
-    isBot: true,
-  }]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasStartedChat, setHasStartedChat] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
 
   const sendMessage = async () => {
@@ -42,11 +39,10 @@ export default function ChatScreen() {
     setMessages(prev => [...prev, userMessage]);
     setMessage('');
     setIsLoading(true);
+    if (!hasStartedChat) setHasStartedChat(true);
 
     try {
-      // Use simplified function with just the query
       const response = await getGeminiResponse(userMessage.text);
-
 
       const assistantMessage = {
         id: (Date.now() + 1).toString(),
@@ -69,73 +65,128 @@ export default function ChatScreen() {
     }
   };
 
+  const handleSubmitEditing = (e: any) => {
+    // Prevent default behavior on web
+    if (Platform.OS === 'web') {
+      e.preventDefault();
+    }
+    sendMessage();
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <ScrollView
-        ref={scrollViewRef}
-        style={styles.messagesContainer}
-        contentContainerStyle={styles.messagesContent}
-        onContentSizeChange={() => scrollViewRef.current?.scrollToEnd()}>
-        {messages.map((msg) => (
-          <View
-            key={msg.id}
-            style={[
-              styles.messageWrapper,
-              { justifyContent: msg.isBot ? 'flex-start' : 'flex-end' },
-            ]}>
-            <View
+      {!hasStartedChat ? (
+        <View style={styles.centeredContainer}>
+          <View style={styles.welcomeContainer}>
+            <Text style={styles.welcomeTitle}>AI Sustainability Assistant</Text>
+            <Text style={styles.welcomeText}>
+              Ask me anything about your shopping history, your environmental print, or for sustainable alternatives.
+            </Text>
+          </View>
+          <View style={styles.centeredInputContainer}>
+            <TextInput
               style={[
-                styles.message,
-                msg.isBot ? styles.botMessage : styles.userMessage,
-              ]}>
-              <Text style={[
-                styles.messageText,
-                msg.isBot ? styles.botMessageText : styles.userMessageText,
-              ]}>
-                {msg.text}
-              </Text>
-            </View>
+                styles.centeredInput,
+                Platform.OS === 'web' && {
+                  outline: 'none',
+                }
+              ]}
+              value={message}
+              onChangeText={setMessage}
+              placeholder="Ask a question..."
+              placeholderTextColor="#666"
+              multiline={Platform.OS !== 'web'}
+              maxLength={500}
+              onSubmitEditing={handleSubmitEditing}
+              blurOnSubmit={false}
+              returnKeyType="send"
+            />
+            <Pressable
+              onPress={sendMessage}
+              style={({ pressed }) => [
+                styles.sendButton,
+                !message.trim() && styles.sendButtonDisabled,
+                pressed && styles.sendButtonPressed,
+              ]}
+              disabled={!message.trim() || isLoading}>
+              <Send
+                size={24}
+                color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+              />
+            </Pressable>
           </View>
-        ))}
-        {isLoading && (
-          <View style={styles.loadingContainer}>
-            <ActivityIndicator color="#4ade80" />
-          </View>
-        )}
-      </ScrollView>
+        </View>
+      ) : (
+        <>
+          <ScrollView
+            ref={scrollViewRef}
+            style={styles.messagesContainer}
+            contentContainerStyle={styles.messagesContent}
+            onContentSizeChange={() => scrollViewRef.current?.scrollToEnd()}>
+            {messages.map((msg) => (
+              <View
+                key={msg.id}
+                style={[
+                  styles.messageWrapper,
+                  { justifyContent: msg.isBot ? 'flex-start' : 'flex-end' },
+                ]}>
+                <View
+                  style={[
+                    styles.message,
+                    msg.isBot ? styles.botMessage : styles.userMessage,
+                  ]}>
+                  <Text style={[
+                    styles.messageText,
+                    msg.isBot ? styles.botMessageText : styles.userMessageText,
+                  ]}>
+                    {msg.text}
+                  </Text>
+                </View>
+              </View>
+            ))}
+            {isLoading && (
+              <View style={styles.loadingContainer}>
+                <ActivityIndicator color="#4ade80" />
+              </View>
+            )}
+          </ScrollView>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={[
-            styles.input,
-            Platform.OS === 'web' && {
-              outline: 'none',
-            }
-          ]}
-          value={message}
-          onChangeText={setMessage}
-          placeholder="Type a message..."
-          placeholderTextColor="#666"
-          multiline
-          maxLength={500}
-          onSubmitEditing={sendMessage}
-        />
-        <Pressable
-          onPress={sendMessage}
-          style={({ pressed }) => [
-            styles.sendButton,
-            !message.trim() && styles.sendButtonDisabled,
-            pressed && styles.sendButtonPressed,
-          ]}
-          disabled={!message.trim() || isLoading}>
-          <Send
-            size={24}
-            color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
-          />
-        </Pressable>
-      </View>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={[
+                styles.input,
+                Platform.OS === 'web' && {
+                  outline: 'none',
+                }
+              ]}
+              value={message}
+              onChangeText={setMessage}
+              placeholder="Type a message..."
+              placeholderTextColor="#666"
+              multiline={Platform.OS !== 'web'}
+              maxLength={500}
+              onSubmitEditing={handleSubmitEditing}
+              blurOnSubmit={false}
+              returnKeyType="send"
+            />
+            <Pressable
+              onPress={sendMessage}
+              style={({ pressed }) => [
+                styles.sendButton,
+                !message.trim() && styles.sendButtonDisabled,
+                pressed && styles.sendButtonPressed,
+              ]}
+              disabled={!message.trim() || isLoading}>
+              <Send
+                size={24}
+                color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+              />
+            </Pressable>
+          </View>
+        </>
+      )}
     </KeyboardAvoidingView>
   );
 }
@@ -144,6 +195,51 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#1a1a1a',
+  },
+  centeredContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  welcomeContainer: {
+    marginBottom: 40,
+    alignItems: 'center',
+    maxWidth: 600,
+  },
+  welcomeTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  welcomeText: {
+    fontSize: 18,
+    color: '#9CA3AF',
+    textAlign: 'center',
+    lineHeight: 24,
+  },
+  centeredInputContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    width: '100%',
+    maxWidth: 600,
+    padding: 20,
+    backgroundColor: '#2a2a2a',
+    borderRadius: 16,
+  },
+  centeredInput: {
+    flex: 1,
+    backgroundColor: '#1a1a1a',
+    borderRadius: 25,
+    padding: 15,
+    paddingTop: 15,
+    color: '#fff',
+    fontSize: 16,
+    marginRight: 10,
+    maxHeight: 120,
+    minHeight: 50,
   },
   messagesContainer: {
     flex: 1,

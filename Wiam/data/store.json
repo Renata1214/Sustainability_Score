@@ -1,0 +1,1347 @@
+[
+    {
+      "name": "Walmart Inc.",
+      "co2_emissions": 13990000,
+      "emissions_intensity": 23,
+      "score": 95.40918164
+    },
+    {
+      "name": "Wallenstam AB",
+      "co2_emissions": 15892,
+      "emissions_intensity": 62,
+      "score": 87.6247505
+    },
+    {
+      "name": "WPP Plc",
+      "co2_emissions": 5161438,
+      "emissions_intensity": 335,
+      "score": 33.13373253
+    },
+    {
+      "name": "Volvo Car Group",
+      "co2_emissions": 266294000,
+      "emissions_intensity": 5109,
+      "score": -919.760479
+    },
+    {
+      "name": "Volkswagen AG",
+      "co2_emissions": 419940000,
+      "emissions_intensity": 1390,
+      "score": -177.4451098
+    },
+    {
+      "name": "Truist Financial",
+      "co2_emissions": 254743,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Travelers",
+      "co2_emissions": 48244,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Toyota Motor Corporation",
+      "co2_emissions": 575730000,
+      "emissions_intensity": 2128,
+      "score": -324.750499
+    },
+    {
+      "name": "TotalEnergies SE",
+      "co2_emissions": 389000000,
+      "emissions_intensity": 1640,
+      "score": -227.3453094
+    },
+    {
+      "name": "Tokio Marine Holdings, Inc.",
+      "co2_emissions": 80201,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Tobii Dynavox",
+      "co2_emissions": 2049,
+      "emissions_intensity": 18,
+      "score": 96.40718563
+    },
+    {
+      "name": "TietoEVRY",
+      "co2_emissions": 207018,
+      "emissions_intensity": 67,
+      "score": 86.62674651
+    },
+    {
+      "name": "Thule Group AB",
+      "co2_emissions": 173319,
+      "emissions_intensity": 201,
+      "score": 59.88023952
+    },
+    {
+      "name": "Thermo Fisher Scientific Inc.",
+      "co2_emissions": 13337413,
+      "emissions_intensity": 304,
+      "score": 39.32135729
+    },
+    {
+      "name": "The Walt Disney Company",
+      "co2_emissions": 1603776,
+      "emissions_intensity": 19,
+      "score": 96.20758483
+    },
+    {
+      "name": "The Kroger Co.",
+      "co2_emissions": 6957969,
+      "emissions_intensity": 53,
+      "score": 89.42115768
+    },
+    {
+      "name": "The Home Depot",
+      "co2_emissions": 5253500,
+      "emissions_intensity": 33,
+      "score": 93.41317365
+    },
+    {
+      "name": "The Economist Group",
+      "co2_emissions": 35195,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "The Coca-Cola Company",
+      "co2_emissions": 5413463,
+      "emissions_intensity": 125,
+      "score": 75.0499002
+    },
+    {
+      "name": "Tesla Inc.",
+      "co2_emissions": 28720000,
+      "emissions_intensity": 334,
+      "score": 33.33333333
+    },
+    {
+      "name": "Tencent Holdings Limited",
+      "co2_emissions": 5739724,
+      "emissions_intensity": 70,
+      "score": 86.02794411
+    },
+    {
+      "name": "Telia Company",
+      "co2_emissions": 11907,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Telenor Group",
+      "co2_emissions": 2908186,
+      "emissions_intensity": 381,
+      "score": 23.95209581
+    },
+    {
+      "name": "Tele2 AB",
+      "co2_emissions": 274731,
+      "emissions_intensity": 100,
+      "score": 80.03992016
+    },
+    {
+      "name": "TechnipFMC",
+      "co2_emissions": 266429,
+      "emissions_intensity": 34,
+      "score": 93.21357285
+    },
+    {
+      "name": "Target Corporation",
+      "co2_emissions": 69482397,
+      "emissions_intensity": 637,
+      "score": -27.14570858
+    },
+    {
+      "name": "Takeda Pharmaceutical Company",
+      "co2_emissions": 5734000,
+      "emissions_intensity": 191,
+      "score": 61.8762475
+    },
+    {
+      "name": "Qualcomm Incorporated",
+      "co2_emissions": 6659361,
+      "emissions_intensity": 162,
+      "score": 67.66467066
+    },
+    {
+      "name": "Qatar National Bank",
+      "co2_emissions": 79104,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Publicis Group",
+      "co2_emissions": 188299,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "Prudential",
+      "co2_emissions": 50921,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Procter & Gamble Company",
+      "co2_emissions": 2316000,
+      "emissions_intensity": 29,
+      "score": 94.21157685
+    },
+    {
+      "name": "PowerCell Group",
+      "co2_emissions": 151,
+      "emissions_intensity": 6,
+      "score": 98.80239521
+    },
+    {
+      "name": "Power Corp of Canada",
+      "co2_emissions": 209609,
+      "emissions_intensity": 5,
+      "score": 99.00199601
+    },
+    {
+      "name": "Postal Savings Bank Of China (PSBC)",
+      "co2_emissions": 214017,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "PostNord AB",
+      "co2_emissions": 484781,
+      "emissions_intensity": 131,
+      "score": 73.85229541
+    },
+    {
+      "name": "Porsche Automobil Holding",
+      "co2_emissions": 68534000,
+      "emissions_intensity": 1286,
+      "score": -156.6866267
+    },
+    {
+      "name": "Poly Developments & Holdings Group",
+      "co2_emissions": 11092,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Platzer Fastigheter Holding AB (publ)",
+      "co2_emissions": 8749,
+      "emissions_intensity": 64,
+      "score": 87.2255489
+    },
+    {
+      "name": "Plantasjen Holding AS",
+      "co2_emissions": 11167,
+      "emissions_intensity": 25,
+      "score": 95.00998004
+    },
+    {
+      "name": "Ping An Insurance Group",
+      "co2_emissions": 326670,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Phillips 66",
+      "co2_emissions": 385200000,
+      "emissions_intensity": 2295,
+      "score": -358.0838323
+    },
+    {
+      "name": "Philip Morris International",
+      "co2_emissions": 4597084,
+      "emissions_intensity": 145,
+      "score": 71.05788423
+    },
+    {
+      "name": "Pfizer Inc.",
+      "co2_emissions": 10818749,
+      "emissions_intensity": 116,
+      "score": 76.84630739
+    },
+    {
+      "name": "PetroChina",
+      "co2_emissions": 160560000,
+      "emissions_intensity": 692,
+      "score": -38.1237525
+    },
+    {
+      "name": "PayPal",
+      "co2_emissions": 612300,
+      "emissions_intensity": 23,
+      "score": 95.40918164
+    },
+    {
+      "name": "Pandox AB",
+      "co2_emissions": 105097,
+      "emissions_intensity": 163,
+      "score": 67.46506986
+    },
+    {
+      "name": "Pandora A/S",
+      "co2_emissions": 264543,
+      "emissions_intensity": 65,
+      "score": 87.0259481
+    },
+    {
+      "name": "Panasonic",
+      "co2_emissions": 106611000,
+      "emissions_intensity": 1722,
+      "score": -243.7125749
+    },
+    {
+      "name": "Novozymes A/S",
+      "co2_emissions": 787000,
+      "emissions_intensity": 303,
+      "score": 39.52095808
+    },
+    {
+      "name": "Novo Nordisk A/S",
+      "co2_emissions": 3831000,
+      "emissions_intensity": 114,
+      "score": 77.24550898
+    },
+    {
+      "name": "Novartis",
+      "co2_emissions": 9272100,
+      "emissions_intensity": 182,
+      "score": 63.67265469
+    },
+    {
+      "name": "Northrop Grumman",
+      "co2_emissions": 705240,
+      "emissions_intensity": 19,
+      "score": 96.20758483
+    },
+    {
+      "name": "Norion Bank",
+      "co2_emissions": 110,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "Nippon Telegraph & Tel",
+      "co2_emissions": 22020000,
+      "emissions_intensity": 226,
+      "score": 54.89021956
+    },
+    {
+      "name": "Nielsen (Global 2020)",
+      "co2_emissions": 62687,
+      "emissions_intensity": 10,
+      "score": 98.00399202
+    },
+    {
+      "name": "Nielsen (Global 2019)",
+      "co2_emissions": 132334,
+      "emissions_intensity": 21,
+      "score": 95.80838323
+    },
+    {
+      "name": "Nielsen (Europe 2019)",
+      "co2_emissions": 10084,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "NextEra Energy",
+      "co2_emissions": 45436674,
+      "emissions_intensity": 1914,
+      "score": -282.0359281
+    },
+    {
+      "name": "Nexer Group AB",
+      "co2_emissions": 1213,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "News Corp",
+      "co2_emissions": 2628153,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "Netflix",
+      "co2_emissions": 1187632,
+      "emissions_intensity": 37,
+      "score": 92.61477046
+    },
+    {
+      "name": "Netel Holding AB (publ)",
+      "co2_emissions": 74222,
+      "emissions_intensity": 226,
+      "score": 54.89021956
+    },
+    {
+      "name": "Nestlé",
+      "co2_emissions": 87550000,
+      "emissions_intensity": 845,
+      "score": -68.66267465
+    },
+    {
+      "name": "Neste Oyj",
+      "co2_emissions": 60754000,
+      "emissions_intensity": 2448,
+      "score": -388.6227545
+    },
+    {
+      "name": "Nederman Holding AB",
+      "co2_emissions": 5978,
+      "emissions_intensity": 13,
+      "score": 97.40518962
+    },
+    {
+      "name": "National Grid (Group) PLC",
+      "co2_emissions": 35124000,
+      "emissions_intensity": 1658,
+      "score": -230.9381238
+    },
+    {
+      "name": "NVIDIA",
+      "co2_emissions": 2839658,
+      "emissions_intensity": 105,
+      "score": 79.04191617
+    },
+    {
+      "name": "Microsoft Corporation",
+      "co2_emissions": 22860663,
+      "emissions_intensity": 110,
+      "score": 78.04391218
+    },
+    {
+      "name": "Micron Technology",
+      "co2_emissions": 7141289,
+      "emissions_intensity": 304,
+      "score": 39.32135729
+    },
+    {
+      "name": "Metso",
+      "co2_emissions": 2651208,
+      "emissions_intensity": 651,
+      "score": -29.94011976
+    },
+    {
+      "name": "Meta Platforms, Inc.",
+      "co2_emissions": 8533471,
+      "emissions_intensity": 73,
+      "score": 85.42914172
+    },
+    {
+      "name": "MetLife, Inc.",
+      "co2_emissions": 66651,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Merck & Co.",
+      "co2_emissions": 7851500,
+      "emissions_intensity": 138,
+      "score": 72.45508982
+    },
+    {
+      "name": "Mercedes-Benz AG",
+      "co2_emissions": 2923000,
+      "emissions_intensity": 18,
+      "score": 96.40718563
+    },
+    {
+      "name": "Medtronic PLC",
+      "co2_emissions": 284706,
+      "emissions_intensity": 9,
+      "score": 98.20359281
+    },
+    {
+      "name": "Medicover",
+      "co2_emissions": 358189,
+      "emissions_intensity": 232,
+      "score": 53.69261477
+    },
+    {
+      "name": "McKesson Corporation",
+      "co2_emissions": 27119447,
+      "emissions_intensity": 99,
+      "score": 80.23952096
+    },
+    {
+      "name": "McDonald's Corporation",
+      "co2_emissions": 57386480,
+      "emissions_intensity": 2471,
+      "score": -393.2135729
+    },
+    {
+      "name": "Mastercard",
+      "co2_emissions": 562583,
+      "emissions_intensity": 25,
+      "score": 95.00998004
+    },
+    {
+      "name": "Marriott International, Inc.",
+      "co2_emissions": 10569022,
+      "emissions_intensity": 509,
+      "score": -1.596806387
+    },
+    {
+      "name": "Marathon Petroleum",
+      "co2_emissions": 437710000,
+      "emissions_intensity": 2515,
+      "score": -401.996008
+    },
+    {
+      "name": "Manulife",
+      "co2_emissions": 1288020,
+      "emissions_intensity": 23,
+      "score": 95.40918164
+    },
+    {
+      "name": "Legal & General",
+      "co2_emissions": 41625,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Latour",
+      "co2_emissions": 19564,
+      "emissions_intensity": 8,
+      "score": 98.40319361
+    },
+    {
+      "name": "Lantmännen Cerealia",
+      "co2_emissions": 245600,
+      "emissions_intensity": 40,
+      "score": 92.01596806
+    },
+    {
+      "name": "Lagercrantz Group",
+      "co2_emissions": 19660,
+      "emissions_intensity": 28,
+      "score": 94.41117764
+    },
+    {
+      "name": "LVMH",
+      "co2_emissions": 833586,
+      "emissions_intensity": 10,
+      "score": 98.00399202
+    },
+    {
+      "name": "LSTH Svenska Handelsfastigheter AB",
+      "co2_emissions": 1325,
+      "emissions_intensity": 13,
+      "score": 97.40518962
+    },
+    {
+      "name": "Konecranes Oyj",
+      "co2_emissions": 5286000,
+      "emissions_intensity": 1231,
+      "score": -145.7085828
+    },
+    {
+      "name": "Knowit AB (publ)",
+      "co2_emissions": 5690,
+      "emissions_intensity": 9,
+      "score": 98.20359281
+    },
+    {
+      "name": "Knorr-Bremse AG",
+      "co2_emissions": 161000,
+      "emissions_intensity": 21,
+      "score": 95.80838323
+    },
+    {
+      "name": "Knightec",
+      "co2_emissions": 356,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Kinnevik",
+      "co2_emissions": 348.8,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Kesko Corporation",
+      "co2_emissions": 11631547,
+      "emissions_intensity": 912,
+      "score": -82.03592814
+    },
+    {
+      "name": "Karo Healthcare AB",
+      "co2_emissions": 162327,
+      "emissions_intensity": 396,
+      "score": 20.95808383
+    },
+    {
+      "name": "Kappahl AB",
+      "co2_emissions": 162147,
+      "emissions_intensity": 324,
+      "score": 35.32934132
+    },
+    {
+      "name": "KPMG International Limited",
+      "co2_emissions": 149149,
+      "emissions_intensity": 51,
+      "score": 89.82035928
+    },
+    {
+      "name": "KONE Corporation",
+      "co2_emissions": 12692300,
+      "emissions_intensity": 1071,
+      "score": -113.7724551
+    },
+    {
+      "name": "Höganäs AB",
+      "co2_emissions": 761600,
+      "emissions_intensity": 626,
+      "score": -24.9500998
+    },
+    {
+      "name": "Hyundai Motor",
+      "co2_emissions": 108349324,
+      "emissions_intensity": 946,
+      "score": -88.82235529
+    },
+    {
+      "name": "Husqvarna AB",
+      "co2_emissions": 3803009,
+      "emissions_intensity": 757,
+      "score": -51.09780439
+    },
+    {
+      "name": "Humana Inc.",
+      "co2_emissions": 31085,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Hultafors Group AB",
+      "co2_emissions": 3808,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Huhtamäki Oyj",
+      "co2_emissions": 4118000,
+      "emissions_intensity": 1028,
+      "score": -105.1896208
+    },
+    {
+      "name": "Hufvudstaden AB",
+      "co2_emissions": 5576,
+      "emissions_intensity": 29,
+      "score": 94.21157685
+    },
+    {
+      "name": "Honeywell International Inc.",
+      "co2_emissions": 19957485,
+      "emissions_intensity": 555,
+      "score": -10.77844311
+    },
+    {
+      "name": "Honda Motor",
+      "co2_emissions": 280020000,
+      "emissions_intensity": 2246,
+      "score": -348.3033932
+    },
+    {
+      "name": "Hon Hai Precision Inc. Co., Ltd.",
+      "co2_emissions": 5757619,
+      "emissions_intensity": 26,
+      "score": 94.81037924
+    },
+    {
+      "name": "Holmen AB",
+      "co2_emissions": 675000,
+      "emissions_intensity": 314,
+      "score": 37.3253493
+    },
+    {
+      "name": "Holcim Ltd.",
+      "co2_emissions": 127000000,
+      "emissions_intensity": 4222,
+      "score": -742.7145709
+    },
+    {
+      "name": "Hitachi, Ltd.",
+      "co2_emissions": 2692400,
+      "emissions_intensity": 34,
+      "score": 93.21357285
+    },
+    {
+      "name": "Hexatronic Group AB",
+      "co2_emissions": 597487,
+      "emissions_intensity": 916,
+      "score": -82.83433134
+    },
+    {
+      "name": "Hexagon AB",
+      "co2_emissions": 409656,
+      "emissions_intensity": 70,
+      "score": 86.02794411
+    },
+    {
+      "name": "Fresenius",
+      "co2_emissions": 1521000,
+      "emissions_intensity": 37,
+      "score": 92.61477046
+    },
+    {
+      "name": "Foxway Group AB",
+      "co2_emissions": 341812,
+      "emissions_intensity": 585,
+      "score": -16.76646707
+    },
+    {
+      "name": "Fortum Corporation",
+      "co2_emissions": 14325600,
+      "emissions_intensity": 1972,
+      "score": -293.6127745
+    },
+    {
+      "name": "Fortnox",
+      "co2_emissions": 2446,
+      "emissions_intensity": 16,
+      "score": 96.80638723
+    },
+    {
+      "name": "Ford Motor Company",
+      "co2_emissions": 337800000,
+      "emissions_intensity": 2047,
+      "score": -308.5828343
+    },
+    {
+      "name": "Foodmark AB",
+      "co2_emissions": 43075,
+      "emissions_intensity": 458,
+      "score": 8.582834331
+    },
+    {
+      "name": "FedEx",
+      "co2_emissions": 22247332,
+      "emissions_intensity": 240,
+      "score": 52.09580838
+    },
+    {
+      "name": "Fastpartner AB",
+      "co2_emissions": 15887,
+      "emissions_intensity": 83,
+      "score": 83.43313373
+    },
+    {
+      "name": "Fastighets AB Balder",
+      "co2_emissions": 241377,
+      "emissions_intensity": 214,
+      "score": 57.28542914
+    },
+    {
+      "name": "Fagerhult Group",
+      "co2_emissions": 1166952,
+      "emissions_intensity": 1446,
+      "score": -188.6227545
+    },
+    {
+      "name": "Facebook",
+      "co2_emissions": 4067000,
+      "emissions_intensity": 47,
+      "score": 90.61876248
+    },
+    {
+      "name": "Fabege AB",
+      "co2_emissions": 14969,
+      "emissions_intensity": 40,
+      "score": 92.01596806
+    },
+    {
+      "name": "ExxonMobil",
+      "co2_emissions": 643000000,
+      "emissions_intensity": 1635,
+      "score": -226.3473054
+    },
+    {
+      "name": "Evolution",
+      "co2_emissions": 7373,
+      "emissions_intensity": 43,
+      "score": 91.41716567
+    },
+    {
+      "name": "Eltel AB",
+      "co2_emissions": 126617,
+      "emissions_intensity": 138,
+      "score": 72.45508982
+    },
+    {
+      "name": "Elisa Corporation",
+      "co2_emissions": 176369,
+      "emissions_intensity": 85,
+      "score": 83.03393214
+    },
+    {
+      "name": "Eli Lilly",
+      "co2_emissions": 3765000,
+      "emissions_intensity": 136,
+      "score": 72.85429142
+    },
+    {
+      "name": "Elevance Health",
+      "co2_emissions": 4920753,
+      "emissions_intensity": 31,
+      "score": 93.81237525
+    },
+    {
+      "name": "Elekta AB",
+      "co2_emissions": 508029,
+      "emissions_intensity": 304,
+      "score": 39.32135729
+    },
+    {
+      "name": "Electrolux Group",
+      "co2_emissions": 69000,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Elanders AB",
+      "co2_emissions": 231981,
+      "emissions_intensity": 177,
+      "score": 64.67065868
+    },
+    {
+      "name": "Einar Mattsson AB",
+      "co2_emissions": 26681,
+      "emissions_intensity": 177,
+      "score": 64.67065868
+    },
+    {
+      "name": "Ecolean",
+      "co2_emissions": 47431,
+      "emissions_intensity": 456,
+      "score": 8.982035928
+    },
+    {
+      "name": "Eastnine AB (publ)",
+      "co2_emissions": 8589,
+      "emissions_intensity": 232,
+      "score": 53.69261477
+    },
+    {
+      "name": "EQT AB",
+      "co2_emissions": 24340,
+      "emissions_intensity": 11,
+      "score": 97.80439122
+    },
+    {
+      "name": "EOG Resources",
+      "co2_emissions": 111210000,
+      "emissions_intensity": 3912,
+      "score": -680.8383234
+    },
+    {
+      "name": "EH Group AB",
+      "co2_emissions": 48488,
+      "emissions_intensity": 157,
+      "score": 68.66267465
+    },
+    {
+      "name": "EG Electronics AB",
+      "co2_emissions": 638,
+      "emissions_intensity": 22,
+      "score": 95.60878244
+    },
+    {
+      "name": "EDF Group",
+      "co2_emissions": 135300000,
+      "emissions_intensity": 1719,
+      "score": -243.1137725
+    },
+    {
+      "name": "E.ON",
+      "co2_emissions": 89340000,
+      "emissions_intensity": 735,
+      "score": -46.70658683
+    },
+    {
+      "name": "Dustin Group",
+      "co2_emissions": 1433679,
+      "emissions_intensity": 594,
+      "score": -18.56287425
+    },
+    {
+      "name": "Duni Group",
+      "co2_emissions": 600458,
+      "emissions_intensity": 896,
+      "score": -78.84231537
+    },
+    {
+      "name": "Duke Energy",
+      "co2_emissions": 107827000,
+      "emissions_intensity": 4296,
+      "score": -757.4850299
+    },
+    {
+      "name": "Dell Technologies",
+      "co2_emissions": 29195100,
+      "emissions_intensity": 287,
+      "score": 42.71457086
+    },
+    {
+      "name": "Deere & Company",
+      "co2_emissions": 98069700,
+      "emissions_intensity": 929,
+      "score": -85.42914172
+    },
+    {
+      "name": "Danske Bank",
+      "co2_emissions": 9292,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Danone",
+      "co2_emissions": 26121000,
+      "emissions_intensity": 971,
+      "score": -93.81237525
+    },
+    {
+      "name": "Danaher Corporation",
+      "co2_emissions": 347849,
+      "emissions_intensity": 11,
+      "score": 97.80439122
+    },
+    {
+      "name": "Daimler",
+      "co2_emissions": 2519000,
+      "emissions_intensity": 14,
+      "score": 97.20558882
+    },
+    {
+      "name": "DSV A / S",
+      "co2_emissions": 12652000,
+      "emissions_intensity": 578,
+      "score": -15.36926148
+    },
+    {
+      "name": "DBS",
+      "co2_emissions": 72580,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Credit Suisse Group",
+      "co2_emissions": 115776,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Country Garden Holdings",
+      "co2_emissions": 334232,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Coor Service Management Holding AB",
+      "co2_emissions": 3371,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Convini Sverige AB",
+      "co2_emissions": 593,
+      "emissions_intensity": 8,
+      "score": 98.40319361
+    },
+    {
+      "name": "Contemporary Amperex Technology",
+      "co2_emissions": 3408278,
+      "emissions_intensity": 64,
+      "score": 87.2255489
+    },
+    {
+      "name": "ConocoPhillips",
+      "co2_emissions": 6448689,
+      "emissions_intensity": 86,
+      "score": 82.83433134
+    },
+    {
+      "name": "Commonwealth Bank",
+      "co2_emissions": 137661,
+      "emissions_intensity": 5,
+      "score": 99.00199601
+    },
+    {
+      "name": "Comcast",
+      "co2_emissions": 1977831,
+      "emissions_intensity": 16,
+      "score": 96.80638723
+    },
+    {
+      "name": "Coloplast A/S",
+      "co2_emissions": 179400,
+      "emissions_intensity": 52,
+      "score": 89.62075848
+    },
+    {
+      "name": "Cloetta AB",
+      "co2_emissions": 282718,
+      "emissions_intensity": 361,
+      "score": 27.94411178
+    },
+    {
+      "name": "Camurus",
+      "co2_emissions": 239,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Café Bar Sverige AB",
+      "co2_emissions": 5100,
+      "emissions_intensity": 102,
+      "score": 79.64071856
+    },
+    {
+      "name": "CVS Health",
+      "co2_emissions": 15493599,
+      "emissions_intensity": 47,
+      "score": 90.61876248
+    },
+    {
+      "name": "CTT Systems AB",
+      "co2_emissions": 126,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "CNOOC",
+      "co2_emissions": 10880000,
+      "emissions_intensity": 184,
+      "score": 63.27345309
+    },
+    {
+      "name": "CK Hutchison",
+      "co2_emissions": 1232047,
+      "emissions_intensity": 37,
+      "score": 92.61477046
+    },
+    {
+      "name": "CITIC",
+      "co2_emissions": 2155,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Bure Equity",
+      "co2_emissions": 7346,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "Bulten AB",
+      "co2_emissions": 157918,
+      "emissions_intensity": 383,
+      "score": 23.55289421
+    },
+    {
+      "name": "Bufab AB",
+      "co2_emissions": 844405,
+      "emissions_intensity": 1031,
+      "score": -105.7884232
+    },
+    {
+      "name": "Brookfield Corporation",
+      "co2_emissions": 13582,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Broadcom Inc.",
+      "co2_emissions": 307009,
+      "emissions_intensity": 9,
+      "score": 98.20359281
+    },
+    {
+      "name": "British American Tobacco",
+      "co2_emissions": 5925000,
+      "emissions_intensity": 168,
+      "score": 66.46706587
+    },
+    {
+      "name": "Bristol Myers Squibb",
+      "co2_emissions": 2060297,
+      "emissions_intensity": 45,
+      "score": 91.01796407
+    },
+    {
+      "name": "Bravida Holding AB",
+      "co2_emissions": 26199,
+      "emissions_intensity": 10,
+      "score": 98.00399202
+    },
+    {
+      "name": "Banco do Brasil S.A.",
+      "co2_emissions": 88646,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "BP",
+      "co2_emissions": 347000000,
+      "emissions_intensity": 1651,
+      "score": -229.5409182
+    },
+    {
+      "name": "BMW Group",
+      "co2_emissions": 134699641,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "BHG Group",
+      "co2_emissions": 28071,
+      "emissions_intensity": 21,
+      "score": 95.80838323
+    },
+    {
+      "name": "BBVA-Banco Bilbao Vizcaya",
+      "co2_emissions": 277604,
+      "emissions_intensity": 5,
+      "score": 99.00199601
+    },
+    {
+      "name": "Axfood AB",
+      "co2_emissions": 2719922,
+      "emissions_intensity": 356,
+      "score": 28.94211577
+    },
+    {
+      "name": "Aviva PLC",
+      "co2_emissions": 34664,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Avanza Bank Holding AB",
+      "co2_emissions": 490,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Autoliv Inc",
+      "co2_emissions": 4128000,
+      "emissions_intensity": 394,
+      "score": 21.35728543
+    },
+    {
+      "name": "Attendo",
+      "co2_emissions": 146000,
+      "emissions_intensity": 103,
+      "score": 79.44111776
+    },
+    {
+      "name": "Asker Healthcare Group AB",
+      "co2_emissions": 685602,
+      "emissions_intensity": 590,
+      "score": -17.76447106
+    },
+    {
+      "name": "Arwidsro Fastighets AB",
+      "co2_emissions": 4042,
+      "emissions_intensity": 144,
+      "score": 71.25748503
+    },
+    {
+      "name": "Arla Foods",
+      "co2_emissions": 19249000,
+      "emissions_intensity": 1633,
+      "score": -225.9481038
+    },
+    {
+      "name": "Arjo AB",
+      "co2_emissions": 74336,
+      "emissions_intensity": 78,
+      "score": 84.43113772
+    },
+    {
+      "name": "Archer Daniels Midland",
+      "co2_emissions": 19640000,
+      "emissions_intensity": 192,
+      "score": 61.67664671
+    },
+    {
+      "name": "Apple, Inc.",
+      "co2_emissions": 20608200,
+      "emissions_intensity": 54,
+      "score": 89.22155689
+    },
+    {
+      "name": "Apoteket AB",
+      "co2_emissions": 427714,
+      "emissions_intensity": 195,
+      "score": 61.07784431
+    },
+    {
+      "name": "Apotea",
+      "co2_emissions": 121428,
+      "emissions_intensity": 251,
+      "score": 49.9001996
+    },
+    {
+      "name": "Anthem, Inc.",
+      "co2_emissions": 1016071,
+      "emissions_intensity": 8,
+      "score": 98.40319361
+    },
+    {
+      "name": "Anglo American",
+      "co2_emissions": 13300000,
+      "emissions_intensity": 379,
+      "score": 24.35129741
+    },
+    {
+      "name": "Amgen Inc.",
+      "co2_emissions": 3469000,
+      "emissions_intensity": 134,
+      "score": 73.25349301
+    },
+    {
+      "name": "American International Group",
+      "co2_emissions": 588692,
+      "emissions_intensity": 11,
+      "score": 97.80439122
+    },
+    {
+      "name": "American Express Company",
+      "co2_emissions": 128181,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "America Movil, S.A.B. de C.V.",
+      "co2_emissions": 4884528,
+      "emissions_intensity": 112,
+      "score": 77.64471058
+    },
+    {
+      "name": "Amazon",
+      "co2_emissions": 71270000,
+      "emissions_intensity": 136,
+      "score": 72.85429142
+    },
+    {
+      "name": "Altria Group, Inc.",
+      "co2_emissions": 5470861,
+      "emissions_intensity": 263,
+      "score": 47.50499002
+    },
+    {
+      "name": "Altor Equity Partners AB",
+      "co2_emissions": 3640852,
+      "emissions_intensity": null,
+      "score": "#VALUE!"
+    },
+    {
+      "name": "Alstom",
+      "co2_emissions": 45246000,
+      "emissions_intensity": 2373,
+      "score": -373.6526946
+    },
+    {
+      "name": "Alphabet Inc.",
+      "co2_emissions": 15736600,
+      "emissions_intensity": 56,
+      "score": 88.82235529
+    },
+    {
+      "name": "Alma Media",
+      "co2_emissions": 16891,
+      "emissions_intensity": 60,
+      "score": 88.0239521
+    },
+    {
+      "name": "Allstate",
+      "co2_emissions": 106467,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Allianz",
+      "co2_emissions": 136448,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "Alibaba Group",
+      "co2_emissions": 13230000,
+      "emissions_intensity": 103,
+      "score": 79.44111776
+    },
+    {
+      "name": "Alfa Laval AB",
+      "co2_emissions": 44575608,
+      "emissions_intensity": 7433,
+      "score": -1383.632735
+    },
+    {
+      "name": "Aktia Bank",
+      "co2_emissions": 216771,
+      "emissions_intensity": 688,
+      "score": -37.3253493
+    },
+    {
+      "name": "Akademiska hus",
+      "co2_emissions": 31936,
+      "emissions_intensity": 45,
+      "score": 91.01796407
+    },
+    {
+      "name": "Airbus",
+      "co2_emissions": 495655000,
+      "emissions_intensity": 8004,
+      "score": -1497.60479
+    },
+    {
+      "name": "airbnb",
+      "co2_emissions": 49000,
+      "emissions_intensity": 5.57,
+      "score": 98.88822355
+    },
+    {
+      "name": "american airlines",
+      "co2_emissions": 42400000,
+      "emissions_intensity": 863.54,
+      "score": -72.36327345
+    },
+    {
+      "name": "instacart",
+      "co2_emissions": 27320,
+      "emissions_intensity": 8.08,
+      "score": 98.38722555
+    },
+    {
+      "name": "uber eats",
+      "co2_emissions": 85000,
+      "emissions_intensity": 7.66,
+      "score": 98.47105788
+    },
+    {
+      "name": "doordash",
+      "co2_emissions": 23110307,
+      "emissions_intensity": 800,
+      "score": -59.68063872
+    },
+    {
+      "name": "spotify",
+      "co2_emissions": 24000,
+      "emissions_intensity": null,
+      "score": 100
+    },
+    {
+      "name": "uber",
+      "co2_emissions": 125000,
+      "emissions_intensity": 78,
+      "score": 84.43113772
+    }
+  ]
+  

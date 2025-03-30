@@ -119,3 +119,17 @@ for user, products in harmful_products.items():
 conn.close()
 
 # user_scores and harmful_products are now available to use in frontend logic
+
+
+#   useEffect(() => {
+#     fetch('https://expert-fiesta-6qq9pwq9694frgj4-5000.app.github.dev/leaderboard')
+#       .then((res) => res.json())
+#       .then((json) => {
+#         setData(json);
+#         setLoading(false);
+#       })
+#       .catch((err) => {
+#         console.error(err);
+#         setLoading(false);
+#       });
+#   }, []);

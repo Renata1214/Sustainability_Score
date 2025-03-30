@@ -1,0 +1,158 @@
+[
+    {
+      "name": "Target",
+      "emissions": 7,
+      "score": 39.01665
+    },
+    {
+      "name": "Walmart",
+      "emissions": 12,
+      "score": -75.41413
+    },
+    {
+      "name": "Instacart",
+      "emissions": 8,
+      "score": 39.01665
+    },
+    {
+      "name": "DoorDash",
+      "emissions": 7.59,
+      "score": -1089.53
+    },
+    {
+      "name": "Good & Gather",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Up & Up",
+      "emissions": 7.69,
+      "score": 52.41872
+    },
+    {
+      "name": "Everspring",
+      "emissions": 7.69,
+      "score": 52.41872
+    },
+    {
+      "name": "Cat & Jack",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Archer Farms",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Threshold",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Market Pantry",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Made By Design",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "A New Day",
+      "emissions": 7.69,
+      "score": 52.41872
+    },
+    {
+      "name": "Equate",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Sam's Choice",
+      "emissions": 7.69,
+      "score": 29.69876
+    },
+    {
+      "name": "Great Value",
+      "emissions": 7.69,
+      "score": 29.69876
+    },
+    {
+      "name": "Mainstays",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Wonder Nation",
+      "emissions": 7.69,
+      "score": 52.41872
+    },
+    {
+      "name": "Time and Tru",
+      "emissions": 7.69,
+      "score": 52.41872
+    },
+    {
+      "name": "George",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "O Organics",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "365 by Whole Foods",
+      "emissions": 7.69,
+      "score": 29.69876
+    },
+    {
+      "name": "Signature Select",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Open Nature",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Instacart Organic",
+      "emissions": 5,
+      "score": 60.34893
+    },
+    {
+      "name": "Local Restaurants",
+      "emissions": 7,
+      "score": 39.01665
+    },
+    {
+      "name": "Plant Power Fast Food",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Veggie Grill",
+      "emissions": 7.69,
+      "score": 39.01665
+    },
+    {
+      "name": "Chipotle",
+      "emissions": 7,
+      "score": 44.4885
+    },
+    {
+      "name": "Panda Express",
+      "emissions": 7,
+      "score": 44.4885
+    },
+    {
+      "name": "McDonald's",
+      "emissions": 10,
+      "score": 20.69786
+    }
+  ]
+  
