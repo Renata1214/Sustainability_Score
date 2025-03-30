@@ -723,7 +723,303 @@
         ]
       }      
       ]
-    }
+    },
+
+    {
+      "user_id": "user_003",
+      "Examples": [
+          {
+              "merchant": {
+                  "id": 101,
+                  "name": "Wells Fargo"
+              },
+              "transactions": [
+                  {
+                      "id": "txn-101",
+                      "external_id": "user_003",
+                      "datetime": "2025-03-21T10:30:00Z",
+                      "url": "https://www.wellsfargo.com/orders/txn-101",
+                      "order_status": "COMPLETED",
+                      "payment_methods": [
+                          {
+                              "external_id": "pm-101",
+                              "type": "CARD",
+                              "brand": "VISA",
+                              "last_four": "1234",
+                              "name": "John Doe",
+                              "transaction_amount": 30.50
+                          }
+                      ],
+                      "price": {
+                          "sub_total": 30.50,
+                          "adjustments": [],
+                          "total": 30.50,
+                          "currency": "USD"
+                      },
+                      "products": [
+                          {
+                              "external_id": "prod-101",
+                              "brand": "Target",
+                              "name": "Up & Up Facial Tissues, 4-Pack",
+                              "url": "https://www.target.com/ip/prod-101",
+                              "quantity": 1,
+                              "eligibility": [],
+                              "price": {
+                                  "sub_total": 5.99,
+                                  "total": 5.99,
+                                  "unit_price": 5.99
+                              }
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "merchant": {
+                  "id": 102,
+                  "name": "H&M Group"
+              },
+              "transactions": [
+                  {
+                      "id": "txn-102",
+                      "external_id": "user_003",
+                      "datetime": "2025-03-22T12:45:00Z",
+                      "url": "https://www.hm.com/orders/txn-102",
+                      "order_status": "PENDING",
+                      "payment_methods": [
+                          {
+                              "external_id": "pm-102",
+                              "type": "CARD",
+                              "brand": "MASTERCARD",
+                              "last_four": "5678",
+                              "name": "John Doe",
+                              "transaction_amount": 45.75
+                          }
+                      ],
+                      "price": {
+                          "sub_total": 45.75,
+                          "adjustments": [],
+                          "total": 45.75,
+                          "currency": "USD"
+                      },
+                      "products": [
+                          {
+                              "external_id": "prod-102",
+                              "brand": "George",
+                              "name": "Men’s Cotton Shirt",
+                              "url": "https://www.hm.com/ip/prod-102",
+                              "quantity": 1,
+                              "eligibility": [],
+                              "price": {
+                                  "sub_total": 45.75,
+                                  "total": 45.75,
+                                  "unit_price": 45.75
+                              }
+                          }
+                      ]
+                  }
+              ]
+          },
+          {
+              "merchant": {
+                  "id": 103,
+                  "name": "FedEx"
+              },
+              "transactions": [
+                  {
+                      "id": "txn-103",
+                      "external_id": "user_003",
+                      "datetime": "2025-03-23T15:20:00Z",
+                      "url": "https://www.fedex.com/orders/txn-103",
+                      "order_status": "SHIPPED",
+                      "payment_methods": [
+                          {
+                              "external_id": "pm-103",
+                              "type": "CARD",
+                              "brand": "AMEX",
+                              "last_four": "9101",
+                              "name": "John Doe",
+                              "transaction_amount": 20.99
+                          }
+                      ],
+                      "price": {
+                          "sub_total": 20.99,
+                          "adjustments": [],
+                          "total": 20.99,
+                          "currency": "USD"
+                      },
+                      "products": [
+                          {
+                              "external_id": "prod-103",
+                              "brand": "Instacart Organic",
+                              "name": "Reusable Grocery Bags, 5-Pack",
+                              "url": "https://www.fedex.com/ip/prod-103",
+                              "quantity": 1,
+                              "eligibility": [],
+                              "price": {
+                                  "sub_total": 20.99,
+                                  "total": 20.99,
+                                  "unit_price": 20.99
+                              }
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
+  }
+  ,
+  {
+    "user_id": "user_004",
+    "Examples": [
+        {
+            "merchant": {
+                "id": 201,
+                "name": "The Walt Disney Company"
+            },
+            "transactions": [
+                {
+                    "id": "txn-201",
+                    "external_id": "user_004",
+                    "datetime": "2025-03-24T11:00:00Z",
+                    "url": "https://www.disney.com/orders/txn-201",
+                    "order_status": "COMPLETED",
+                    "payment_methods": [
+                        {
+                            "external_id": "pm-201",
+                            "type": "CARD",
+                            "brand": "VISA",
+                            "last_four": "2345",
+                            "name": "Jane Doe",
+                            "transaction_amount": 50.00
+                        }
+                    ],
+                    "price": {
+                        "sub_total": 50.00,
+                        "adjustments": [],
+                        "total": 50.00,
+                        "currency": "USD"
+                    },
+                    "products": [
+                        {
+                            "external_id": "prod-201",
+                            "brand": "Market Pantry",
+                            "name": "Organic Fruit Snacks, 10-Pack",
+                            "url": "https://www.disney.com/ip/prod-201",
+                            "quantity": 1,
+                            "eligibility": [],
+                            "price": {
+                                "sub_total": 15.00,
+                                "total": 15.00,
+                                "unit_price": 15.00
+                            }
+                        },
+                        {
+                            "external_id": "prod-202",
+                            "brand": "Time and Tru",
+                            "name": "Disney Character T-Shirt",
+                            "url": "https://www.disney.com/ip/prod-202",
+                            "quantity": 1,
+                            "eligibility": [],
+                            "price": {
+                                "sub_total": 20.00,
+                                "total": 20.00,
+                                "unit_price": 20.00
+                            }
+                        },
+                        {
+                            "external_id": "prod-203",
+                            "brand": "Wonder Nation",
+                            "name": "Mickey Mouse Plush Toy",
+                            "url": "https://www.disney.com/ip/prod-203",
+                            "quantity": 1,
+                            "eligibility": [],
+                            "price": {
+                                "sub_total": 15.00,
+                                "total": 15.00,
+                                "unit_price": 15.00
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "merchant": {
+                "id": 202,
+                "name": "The Home Depot"
+            },
+            "transactions": [
+                {
+                    "id": "txn-202",
+                    "external_id": "user_004",
+                    "datetime": "2025-03-25T14:30:00Z",
+                    "url": "https://www.homedepot.com/orders/txn-202",
+                    "order_status": "PENDING",
+                    "payment_methods": [
+                        {
+                            "external_id": "pm-202",
+                            "type": "CARD",
+                            "brand": "MASTERCARD",
+                            "last_four": "6789",
+                            "name": "Jane Doe",
+                            "transaction_amount": 35.99
+                        }
+                    ],
+                    "price": {
+                        "sub_total": 35.99,
+                        "adjustments": [],
+                        "total": 35.99,
+                        "currency": "USD"
+                    },
+                    "products": [
+                        {
+                            "external_id": "prod-204",
+                            "brand": "Great Value",
+                            "name": "All-Purpose Cleaner, 32 oz",
+                            "url": "https://www.homedepot.com/ip/prod-204",
+                            "quantity": 1,
+                            "eligibility": [],
+                            "price": {
+                                "sub_total": 10.99,
+                                "total": 10.99,
+                                "unit_price": 10.99
+                            }
+                        },
+                        {
+                            "external_id": "prod-205",
+                            "brand": "Made By Design",
+                            "name": "Heavy Duty Storage Bin, 10-Gallon",
+                            "url": "https://www.homedepot.com/ip/prod-205",
+                            "quantity": 1,
+                            "eligibility": [],
+                            "price": {
+                                "sub_total": 15.00,
+                                "total": 15.00,
+                                "unit_price": 15.00
+                            }
+                        },
+                        {
+                            "external_id": "prod-206",
+                            "brand": "Threshold",
+                            "name": "LED Light Bulb, 4-Pack",
+                            "url": "https://www.homedepot.com/ip/prod-206",
+                            "quantity": 1,
+                            "eligibility": [],
+                            "price": {
+                                "sub_total": 10.00,
+                                "total": 10.00,
+                                "unit_price": 10.00
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+  
     ]
 }
 
