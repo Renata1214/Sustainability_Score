@@ -12,7 +12,8 @@ export default function TabLayout() {
         tabBarActiveTintColor: '#4ade80',
         tabBarInactiveTintColor: '#666',
         headerShown: false,
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -31,7 +32,15 @@ export default function TabLayout() {
         name="chat"
         options={{
           title: 'Eco Chat',
-          tabBarIcon: ({ size, color }) => <MessageSquare size={size} color={color} />,
+          tabBarIcon: ({ size, color }) => (
+            <MessageSquare size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: 'Map', // No icon here
         }}
       />
     </Tabs>

@@ -1,103 +1,83 @@
-import { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView, Pressable, KeyboardAvoidingView, Platform } from 'react-native';
+import React, { useState, useRef } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  ScrollView,
+  Pressable,
+  KeyboardAvoidingView,
+  Platform,
+  ActivityIndicator,
+} from 'react-native';
 import { Send } from 'lucide-react-native';
+import { getGeminiResponse } from '@/lib/gemini';
+
 
 interface Message {
-  id: number;
+  id: string;
   text: string;
   isBot: boolean;
 }
 
 export default function ChatScreen() {
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [isFullChat, setIsFullChat] = useState(false);
+  const [messages, setMessages] = useState<Message[]>([{
+    id: '1',
+    text: "Hello! I'm your AI assistant. How can I help you today?",
+    isBot: true,
+  }]);
+  const [isLoading, setIsLoading] = useState(false);
+  const scrollViewRef = useRef<ScrollView>(null);
 
-  const loraxResponses = [
-    "Unless someone like you cares a whole awful lot, nothing is going to get better. It's not.",
-    "I speak for the trees, for the trees have no tongues. And I'm asking you, sir, at the top of my lungs!",
-    "Every small action counts! Plant a tree, reduce waste, and spread the word about environmental conservation!",
-    "Remember, the environment is not just about trees - it's about maintaining balance in our ecosystem.",
-    "Let's work together to make our world a greener, cleaner place for future generations!",
-  ];
+  const sendMessage = async () => {
+    if (message.trim() === '' || isLoading) return;
 
-  const sendMessage = () => {
-    if (message.trim() === '') return;
+    const userMessage = {
+      id: Date.now().toString(),
+      text: message.trim(),
+      isBot: false,
+    };
 
-    const newMessages = [
-      ...messages,
-      { id: messages.length + 1, text: message, isBot: false },
-    ];
-
-    setMessages(newMessages);
+    setMessages(prev => [...prev, userMessage]);
     setMessage('');
+    setIsLoading(true);
 
-    if (!isFullChat) {
-      setIsFullChat(true);
-      setTimeout(() => {
-        setMessages([
-          ...newMessages,
-          { 
-            id: newMessages.length + 1, 
-            text: "Hello! I am the Lorax, and I speak for the trees! How can I help you today?", 
-            isBot: true 
-          },
-        ]);
-      }, 500);
-    } else {
-      setTimeout(() => {
-        const randomResponse = loraxResponses[Math.floor(Math.random() * loraxResponses.length)];
-        setMessages([
-          ...newMessages,
-          { id: newMessages.length + 1, text: randomResponse, isBot: true },
-        ]);
-      }, 1000);
+    try {
+      // Use simplified function with just the query
+      const response = await getGeminiResponse(userMessage.text);
+
+
+      const assistantMessage = {
+        id: (Date.now() + 1).toString(),
+        text: response,
+        isBot: true,
+      };
+
+      setMessages(prev => [...prev, assistantMessage]);
+    } catch (error) {
+      console.error('Error in chat:', error);
+      
+      const errorMessage = {
+        id: (Date.now() + 1).toString(),
+        text: 'Sorry, I encountered an error. Please try again.',
+        isBot: true,
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
     }
   };
-
-  if (!isFullChat) {
-    return (
-      <View style={styles.initialContainer}>
-        <View style={styles.contentContainer}>
-          <View style={styles.welcomeSection}>
-            <Text style={styles.welcomeTitle}>Welcome to Eco Chat</Text>
-            <Text style={styles.welcomeSubtitle}>Chat with the Lorax about environmental sustainability</Text>
-          </View>
-          <View style={styles.inputSection}>
-            <TextInput
-              style={[
-                styles.initialInput,
-                Platform.OS === 'web' && {
-                  outline: 'none',
-                }
-              ]}
-              value={message}
-              onChangeText={setMessage}
-              placeholder="Ask the Lorax anything about sustainability..."
-              placeholderTextColor="#666"
-              multiline
-            />
-            <Pressable 
-              onPress={sendMessage}
-              style={({ pressed }) => [
-                styles.sendButton,
-                pressed && styles.sendButtonPressed
-              ]}>
-              <Send size={24} color="#fff" />
-            </Pressable>
-          </View>
-        </View>
-      </View>
-    );
-  }
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <ScrollView 
+      <ScrollView
+        ref={scrollViewRef}
         style={styles.messagesContainer}
-        contentContainerStyle={styles.messagesContent}>
+        contentContainerStyle={styles.messagesContent}
+        onContentSizeChange={() => scrollViewRef.current?.scrollToEnd()}>
         {messages.map((msg) => (
           <View
             key={msg.id}
@@ -110,10 +90,20 @@ export default function ChatScreen() {
                 styles.message,
                 msg.isBot ? styles.botMessage : styles.userMessage,
               ]}>
-              <Text style={styles.messageText}>{msg.text}</Text>
+              <Text style={[
+                styles.messageText,
+                msg.isBot ? styles.botMessageText : styles.userMessageText,
+              ]}>
+                {msg.text}
+              </Text>
             </View>
           </View>
         ))}
+        {isLoading && (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator color="#4ade80" />
+          </View>
+        )}
       </ScrollView>
 
       <View style={styles.inputContainer}>
@@ -126,17 +116,24 @@ export default function ChatScreen() {
           ]}
           value={message}
           onChangeText={setMessage}
-          placeholder="Type your message..."
+          placeholder="Type a message..."
           placeholderTextColor="#666"
           multiline
+          maxLength={500}
+          onSubmitEditing={sendMessage}
         />
-        <Pressable 
+        <Pressable
           onPress={sendMessage}
           style={({ pressed }) => [
             styles.sendButton,
-            pressed && styles.sendButtonPressed
-          ]}>
-          <Send size={24} color="#fff" />
+            !message.trim() && styles.sendButtonDisabled,
+            pressed && styles.sendButtonPressed,
+          ]}
+          disabled={!message.trim() || isLoading}>
+          <Send
+            size={24}
+            color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+          />
         </Pressable>
       </View>
     </KeyboardAvoidingView>
@@ -144,53 +141,6 @@ export default function ChatScreen() {
 }
 
 const styles = StyleSheet.create({
-  initialContainer: {
-    flex: 1,
-    backgroundColor: '#1a1a1a',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  contentContainer: {
-    width: '100%',
-    maxWidth: 600,
-    padding: 20,
-    flex: 1,
-    justifyContent: 'center',
-  },
-  welcomeSection: {
-    alignItems: 'center',
-    marginBottom: 40,
-  },
-  welcomeTitle: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#4ade80',
-    marginBottom: 16,
-    textAlign: 'center',
-  },
-  welcomeSubtitle: {
-    fontSize: 18,
-    color: '#fff',
-    textAlign: 'center',
-    maxWidth: 300,
-    lineHeight: 24,
-  },
-  inputSection: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  },
-  initialInput: {
-    flex: 1,
-    backgroundColor: '#2a2a2a',
-    borderRadius: 25,
-    padding: 15,
-    paddingTop: 15,
-    color: '#fff',
-    fontSize: 16,
-    marginRight: 10,
-    maxHeight: 120,
-    minHeight: 50,
-  },
   container: {
     flex: 1,
     backgroundColor: '#1a1a1a',
@@ -222,9 +172,18 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 5,
   },
   messageText: {
-    color: '#fff',
     fontSize: 16,
     lineHeight: 24,
+  },
+  botMessageText: {
+    color: '#fff',
+  },
+  userMessageText: {
+    color: '#fff',
+  },
+  loadingContainer: {
+    padding: 16,
+    alignItems: 'center',
   },
   inputContainer: {
     flexDirection: 'row',
@@ -256,5 +215,8 @@ const styles = StyleSheet.create({
   },
   sendButtonPressed: {
     backgroundColor: '#3bba6a',
+  },
+  sendButtonDisabled: {
+    backgroundColor: '#E5E7EB',
   },
 });
