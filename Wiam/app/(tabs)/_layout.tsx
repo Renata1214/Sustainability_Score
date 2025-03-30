@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Leaf, Trophy, MessageCircle } from 'lucide-react-native';
+import { Leaf, Trophy, MessageCircle, Map } from 'lucide-react-native';
 import { View, StyleSheet } from 'react-native';
 
 export default function TabLayout() {
@@ -42,6 +42,17 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => (
             <View style={styles.iconContainer}>
               <MessageCircle size={size} color={color} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="map"
+        options={{
+          title: 'Map',
+          tabBarIcon: ({ color, size }) => (
+            <View style={styles.iconContainer}>
+              <Map size={size} color={color} />
             </View>
           ),
         }}

@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, Text, StyleSheet, Animated, Platform, Dimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 function LoadingScreen({ onAnimationComplete }: { onAnimationComplete: () => void }) {
   const fadeAnim = new Animated.Value(0);
@@ -11,30 +13,25 @@ function LoadingScreen({ onAnimationComplete }: { onAnimationComplete: () => voi
   const opacityAnim = new Animated.Value(1);
 
   useEffect(() => {
-    // Initial delay before starting animations
     Animated.sequence([
-      // Add initial delay
       Animated.delay(500),
-      // Slower fade in and scale up of the logo
       Animated.parallel([
         Animated.timing(fadeAnim, {
           toValue: 1,
-          duration: 2500, // Increased from 1500
+          duration: 2500,
           useNativeDriver: true,
         }),
         Animated.spring(scaleAnim, {
           toValue: 1,
-          tension: 15, // Reduced from 20
-          friction: 8, // Increased from 7
+          tension: 15,
+          friction: 8,
           useNativeDriver: true,
         }),
       ]),
-      // Longer pause before fade out
-      Animated.delay(800), // Increased from 500
-      // Slower fade out
+      Animated.delay(800),
       Animated.timing(opacityAnim, {
         toValue: 0,
-        duration: 1200, // Increased from 800
+        duration: 1200,
         useNativeDriver: true,
       }),
     ]).start(() => {
@@ -103,25 +100,33 @@ const styles = StyleSheet.create({
   },
   content: {
     alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 20,
   },
   logoContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: Platform.select({ ios: 10, android: 10, default: 20 }),
   },
   logo: {
-    fontSize: 96,
-    marginBottom: 30,
+    fontSize: Platform.select({ ios: 64, android: 64, default: 96 }),
+    marginBottom: Platform.select({ ios: 20, android: 20, default: 30 }),
   },
   appName: {
-    fontSize: 200,
+    fontSize: Platform.select({ 
+      ios: SCREEN_WIDTH * 0.15,
+      android: SCREEN_WIDTH * 0.15,
+      default: 200 
+    }),
     fontWeight: 'bold',
     color: '#4ade80',
     letterSpacing: 2,
+    textAlign: 'center',
   },
   tagline: {
-    fontSize: 20,
+    fontSize: Platform.select({ ios: 16, android: 16, default: 20 }),
     color: '#666',
     letterSpacing: 3,
-    marginTop: 10,
+    marginTop: Platform.select({ ios: 8, android: 8, default: 10 }),
+    textAlign: 'center',
   },
 });

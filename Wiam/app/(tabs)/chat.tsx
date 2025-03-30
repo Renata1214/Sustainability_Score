@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
-  Dimensions,
+  Animated,
 } from 'react-native';
 import { Send } from 'lucide-react-native';
 import { getGeminiResponse } from '@/lib/gemini';
@@ -26,6 +26,24 @@ export default function ChatScreen() {
   const [isLoading, setIsLoading] = useState(false);
   const [hasStartedChat, setHasStartedChat] = useState(false);
   const scrollViewRef = useRef<ScrollView>(null);
+  const glowAnimation = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(glowAnimation, {
+          toValue: 1,
+          duration: 2000,
+          useNativeDriver: false, // Important: Set to false for web compatibility
+        }),
+        Animated.timing(glowAnimation, {
+          toValue: 0,
+          duration: 2000,
+          useNativeDriver: false, // Important: Set to false for web compatibility
+        }),
+      ])
+    ).start();
+  }, []);
 
   const sendMessage = async () => {
     if (message.trim() === '' || isLoading) return;
@@ -66,11 +84,26 @@ export default function ChatScreen() {
   };
 
   const handleSubmitEditing = (e: any) => {
-    // Prevent default behavior on web
     if (Platform.OS === 'web') {
       e.preventDefault();
     }
     sendMessage();
+  };
+
+  const getGlowStyle = () => {
+    const interpolatedGlow = glowAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0px 0px 10px rgba(74, 222, 128, 0.2)', '0px 0px 20px rgba(74, 222, 128, 0.5)']
+    });
+
+    return Platform.OS === 'web' 
+      ? { boxShadow: interpolatedGlow }
+      : {
+          shadowOpacity: glowAnimation.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0.2, 0.5]
+          })
+        };
   };
 
   return (
@@ -85,38 +118,42 @@ export default function ChatScreen() {
               Ask me anything about your shopping history, your environmental print, or for sustainable and healthy alternatives.
             </Text>
           </View>
-          <View style={styles.centeredInputContainer}>
-            <TextInput
-              style={[
-                styles.centeredInput,
-                Platform.OS === 'web' && {
-                  outline: 'none',
-                }
-              ]}
-              value={message}
-              onChangeText={setMessage}
-              placeholder="Ask a question..."
-              placeholderTextColor="#666"
-              multiline={Platform.OS !== 'web'}
-              maxLength={500}
-              onSubmitEditing={handleSubmitEditing}
-              blurOnSubmit={false}
-              returnKeyType="send"
-            />
-            <Pressable
-              onPress={sendMessage}
-              style={({ pressed }) => [
-                styles.sendButton,
-                !message.trim() && styles.sendButtonDisabled,
-                pressed && styles.sendButtonPressed,
-              ]}
-              disabled={!message.trim() || isLoading}>
-              <Send
-                size={24}
-                color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+          <Animated.View 
+            style={[
+              styles.glowContainer,
+              getGlowStyle()
+            ]}>
+            <View style={styles.centeredInputContainer}>
+              <TextInput
+                style={[
+                  styles.centeredInput,
+                  Platform.OS === 'web' && { outline: 'none' }
+                ]}
+                value={message}
+                onChangeText={setMessage}
+                placeholder="Ask a question..."
+                placeholderTextColor="#666"
+                multiline={Platform.OS !== 'web'}
+                maxLength={500}
+                onSubmitEditing={handleSubmitEditing}
+                blurOnSubmit={false}
+                returnKeyType="send"
               />
-            </Pressable>
-          </View>
+              <Pressable
+                onPress={sendMessage}
+                style={({ pressed }) => [
+                  styles.sendButton,
+                  !message.trim() && styles.sendButtonDisabled,
+                  pressed && styles.sendButtonPressed,
+                ]}
+                disabled={!message.trim() || isLoading}>
+                <Send
+                  size={24}
+                  color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+                />
+              </Pressable>
+            </View>
+          </Animated.View>
         </View>
       ) : (
         <>
@@ -153,38 +190,42 @@ export default function ChatScreen() {
             )}
           </ScrollView>
 
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={[
-                styles.input,
-                Platform.OS === 'web' && {
-                  outline: 'none',
-                }
-              ]}
-              value={message}
-              onChangeText={setMessage}
-              placeholder="Type a message..."
-              placeholderTextColor="#666"
-              multiline={Platform.OS !== 'web'}
-              maxLength={500}
-              onSubmitEditing={handleSubmitEditing}
-              blurOnSubmit={false}
-              returnKeyType="send"
-            />
-            <Pressable
-              onPress={sendMessage}
-              style={({ pressed }) => [
-                styles.sendButton,
-                !message.trim() && styles.sendButtonDisabled,
-                pressed && styles.sendButtonPressed,
-              ]}
-              disabled={!message.trim() || isLoading}>
-              <Send
-                size={24}
-                color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+          <Animated.View 
+            style={[
+              styles.inputContainer,
+              getGlowStyle()
+            ]}>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                style={[
+                  styles.input,
+                  Platform.OS === 'web' && { outline: 'none' }
+                ]}
+                value={message}
+                onChangeText={setMessage}
+                placeholder="Type a message..."
+                placeholderTextColor="#666"
+                multiline={Platform.OS !== 'web'}
+                maxLength={500}
+                onSubmitEditing={handleSubmitEditing}
+                blurOnSubmit={false}
+                returnKeyType="send"
               />
-            </Pressable>
-          </View>
+              <Pressable
+                onPress={sendMessage}
+                style={({ pressed }) => [
+                  styles.sendButton,
+                  !message.trim() && styles.sendButtonDisabled,
+                  pressed && styles.sendButtonPressed,
+                ]}
+                disabled={!message.trim() || isLoading}>
+                <Send
+                  size={24}
+                  color={message.trim() ? '#FFFFFF' : '#9CA3AF'}
+                />
+              </Pressable>
+            </View>
+          </Animated.View>
         </>
       )}
     </KeyboardAvoidingView>
@@ -220,14 +261,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 24,
   },
+  glowContainer: {
+    width: '100%',
+    maxWidth: 600,
+    borderRadius: 20,
+    backgroundColor: '#2a2a2a',
+    shadowColor: '#4ade80',
+    shadowOffset: { width: 0, height: 0 },
+    shadowRadius: 20,
+  },
   centeredInputContainer: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    width: '100%',
-    maxWidth: 600,
     padding: 20,
-    backgroundColor: '#2a2a2a',
-    borderRadius: 16,
   },
   centeredInput: {
     flex: 1,
@@ -282,11 +328,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   inputContainer: {
-    flexDirection: 'row',
-    padding: 15,
     backgroundColor: '#2a2a2a',
+    padding: 15,
+    shadowColor: '#4ade80',
+    shadowOffset: { width: 0, height: 0 },
+    shadowRadius: 20,
+  },
+  inputWrapper: {
+    flexDirection: 'row',
     alignItems: 'flex-end',
-    justifyContent: 'center',
+    maxWidth: 770,
+    marginHorizontal: 'auto',
   },
   input: {
     flex: 1,
@@ -299,7 +351,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     maxHeight: 120,
     minHeight: 50,
-    maxWidth: 770,
   },
   sendButton: {
     backgroundColor: '#4ade80',

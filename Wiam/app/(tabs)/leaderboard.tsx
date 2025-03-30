@@ -1,129 +1,10 @@
-// // app/(tabs)/leaderboard.tsx
-// import React from 'react';
-// import { View, Text, FlatList, StyleSheet } from 'react-native';
-// import leaderboardData from '../data/leaderboard.json'; // 👈 Direct import, no fetch!
-
-// export default function LeaderboardScreen() {
-//   const getMedalEmoji = (index: number) => {
-//     if (index === 0) return '🥇';
-//     if (index === 1) return '🥈';
-//     if (index === 2) return '🥉';
-//     return `${index + 1}`;
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.title}>🏆 Global Rankings</Text>
-//       <FlatList
-//         data={leaderboardData}
-//         keyExtractor={(item) => item.user_id}
-//         renderItem={({ item, index }) => (
-//           <View style={styles.item}>
-//             <Text style={styles.rank}>{getMedalEmoji(index)}</Text>
-//             <View>
-//               <Text style={styles.name}>{item.user_id}</Text>
-//               <Text style={styles.score}>{item.score.toFixed(2)} points</Text>
-//             </View>
-//           </View>
-//         )}
-//       />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: { flex: 1, backgroundColor: '#111', padding: 20 },
-//   title: { fontSize: 22, fontWeight: 'bold', color: 'white', marginBottom: 20 },
-//   item: {
-//     backgroundColor: '#1e1e1e',
-//     padding: 15,
-//     borderRadius: 10,
-//     marginBottom: 12,
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//   },
-//   rank: { fontSize: 24, marginRight: 12 },
-//   name: { color: 'white', fontWeight: 'bold', fontSize: 18 },
-//   score: { color: '#4ade80', fontSize: 16 },
-// });
-// import React from 'react';
-// import { View, Text, FlatList, StyleSheet } from 'react-native';
-// import leaderboardJson from '../data/leaderboard.json';
-
-// const leaderboardData = leaderboardJson.leaderboard;
-// const harmfulProducts = leaderboardJson.harmful_products_user_001;
-
-// export default function LeaderboardScreen() {
-//   const getMedalEmoji = (index: number) => {
-//     if (index === 0) return '🥇';
-//     if (index === 1) return '🥈';
-//     if (index === 2) return '🥉';
-//     return `${index + 1}`;
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.title}>🏆 Global Rankings</Text>
-//       <FlatList
-//         data={leaderboardData}
-//         keyExtractor={(item) => item.user_id}
-//         renderItem={({ item, index }) => (
-//           <View style={styles.item}>
-//             <Text style={styles.rank}>{getMedalEmoji(index)}</Text>
-//             <View>
-//               <Text style={styles.name}>{item.user_id}</Text>
-//               <Text style={styles.score}>{item.score.toFixed(2)} points</Text>
-//             </View>
-//           </View>
-//         )}
-//       />
-
-//       {/* Harmful Products Section */}
-//       <Text style={styles.subtitle}>How can I climb up the leaderboard? Replace these products!</Text>
-//       <FlatList
-//         data={harmfulProducts}
-//         keyExtractor={(item, index) => item.product_name + index}
-//         renderItem={({ item }) => (
-//           <View style={styles.productItem}>
-//             <Text style={styles.productName}>{item.product_name}</Text>
-//             <Text style={styles.productDetail}>Brand: {item.brand} | Store: {item.store}</Text>
-//             <Text style={styles.productScore}>Sustainability Score: {item.score}</Text>
-//           </View>
-//         )}
-//       />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: { flex: 1, backgroundColor: '#111', padding: 20 },
-//   title: { fontSize: 22, fontWeight: 'bold', color: 'white', marginBottom: 20 },
-//   subtitle: { fontSize: 18, fontWeight: 'bold', color: '#f87171', marginTop: 30, marginBottom: 10 },
-//   item: {
-//     backgroundColor: '#1e1e1e',
-//     padding: 15,
-//     borderRadius: 10,
-//     marginBottom: 12,
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//   },
-//   rank: { fontSize: 24, marginRight: 12 },
-//   name: { color: 'white', fontWeight: 'bold', fontSize: 18 },
-//   score: { color: '#4ade80', fontSize: 16 },
-//   productItem: {
-//     backgroundColor: '#27272a',
-//     padding: 12,
-//     borderRadius: 10,
-//     marginBottom: 10,
-//   },
-//   productName: { color: 'white', fontWeight: 'bold', fontSize: 16 },
-//   productDetail: { color: '#d4d4d8', fontSize: 14 },
-//   productScore: { color: '#f87171', fontSize: 14, marginTop: 4 },
-// });
 import React from 'react';
-import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Platform, Dimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import leaderboardJson from '../data/leaderboard.json';
 
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+const isWeb = Platform.OS === 'web';
 const leaderboardData = leaderboardJson.leaderboard;
 const harmfulProducts = leaderboardJson.harmful_products_user_001;
 
@@ -135,49 +16,133 @@ export default function LeaderboardScreen() {
     return `${index + 1}`;
   };
 
+  const isNegativeScore = (score: number) => score < 0;
+
   return (
-    <ScrollView contentContainerStyle={styles.scrollContent}>
-      <Text style={styles.title}>🏆 Global Sustainability Leaderboard</Text>
-
-      <View style={styles.centeredSection}>
-        {leaderboardData.map((item, index) => (
-          <View style={styles.leaderItem} key={item.user_id}>
-            <Text style={styles.rank}>{getMedalEmoji(index)}</Text>
-            <View style={styles.userInfo}>
-              <Text style={styles.userName}>{item.user_id}</Text>
-              <Text style={styles.userScore}>{item.score.toFixed(2)} points</Text>
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <View style={styles.column}>
+          <Text style={styles.title}>🏆 Global Sustainability Leaderboard</Text>
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.leaderboardContainer}>
+              {leaderboardData.map((item, index) => (
+                <LinearGradient
+                  key={item.user_id}
+                  colors={[
+                    'rgba(28, 28, 30, 0.95)',
+                    'rgba(28, 28, 30, 0.85)',
+                    'rgba(28, 28, 30, 0.75)'
+                  ]}
+                  locations={[0, 0.7, 1]}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 0, y: 1 }}
+                  style={styles.leaderItemGradient}
+                >
+                  <View style={styles.leaderItem}>
+                    <Text style={styles.rank}>{getMedalEmoji(index)}</Text>
+                    <View style={styles.userInfo}>
+                      <Text style={styles.userName}>{item.user_id}</Text>
+                      <Text style={styles.userScore}>{item.score.toFixed(2)} points</Text>
+                    </View>
+                  </View>
+                </LinearGradient>
+              ))}
             </View>
-          </View>
-        ))}
-      </View>
+          </ScrollView>
+        </View>
 
-      <Text style={styles.subheading}>🔄 How can I climb up the leaderboard?</Text>
-      <Text style={styles.description}>Replace these products!</Text>
+        <View style={styles.divider} />
 
-      <View style={styles.centeredSection}>
-        {harmfulProducts.map((item, index) => (
-          <View style={styles.productCard} key={item.product_name + index}>
-            <Text style={styles.productName}>{item.product_name}</Text>
-            <Text style={styles.productDetails}>🛍️ Brand: {item.brand}  |  🏪 Store: {item.store}</Text>
-            <Text style={styles.productScore}>
-              🔻 Sustainability Score: <Text style={styles.lowScore}>{item.score}</Text>
-            </Text>
-          </View>
-        ))}
+        <View style={styles.column}>
+          <Text style={styles.subheading}>🔄 How can I climb up the leaderboard?</Text>
+          <Text style={styles.description}>Replace these products!</Text>
+          <ScrollView style={styles.scrollView}>
+            <View style={styles.productsContainer}>
+              {harmfulProducts.map((item, index) => {
+                const negative = isNegativeScore(Number(item.score));
+                return (
+                  <LinearGradient
+                    key={item.product_name + index}
+                    colors={[
+                      'rgba(39, 39, 42, 0.95)',
+                      'rgba(39, 39, 42, 0.85)',
+                      'rgba(39, 39, 42, 0.75)'
+                    ]}
+                    locations={[0, 0.7, 1]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 0, y: 1 }}
+                    style={[
+                      styles.productCardGradient,
+                      { borderLeftColor: negative ? '#f87171' : '#4ade80' }
+                    ]}
+                  >
+                    <View style={[
+                      styles.productCard,
+                      { borderLeftColor: negative ? '#f87171' : '#4ade80' }
+                    ]}>
+                      <Text style={styles.productName}>{item.product_name}</Text>
+                      <Text style={styles.productDetails}>🛍️ Brand: {item.brand}  |  🏪 Store: {item.store}</Text>
+                      <Text style={[
+                        styles.productScore,
+                        { color: negative ? '#f87171' : '#4ade80' }
+                      ]}>
+                        {negative ? '🔻' : '🔼'} Sustainability Score:{' '}
+                        <Text style={[
+                          styles.scoreValue,
+                          { color: negative ? '#ef4444' : '#22c55e' }
+                        ]}>
+                          {item.score}
+                        </Text>
+                      </Text>
+                    </View>
+                  </LinearGradient>
+                );
+              })}
+            </View>
+          </ScrollView>
+        </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollContent: {
-    padding: 20,
-    alignItems: 'center',
+  container: {
+    flex: 1,
     backgroundColor: '#101010',
   },
-  centeredSection: {
+  content: {
+    flex: 1,
+    flexDirection: isWeb ? 'row' : 'column',
+    padding: 20,
+    paddingTop: Platform.OS === 'ios' ? 60 : 20,
+    maxWidth: isWeb ? 1400 : undefined,
+    alignSelf: 'center',
     width: '100%',
-    maxWidth: 450, // Ensures it stays centered on wider screens
+  },
+  column: {
+    flex: 1,
+    minWidth: isWeb ? 400 : 'auto',
+    maxWidth: isWeb ? 800 : undefined,
+    alignSelf: 'center',
+    width: '100%',
+  },
+  divider: {
+    width: isWeb ? 1 : '100%',
+    height: isWeb ? '100%' : 1,
+    backgroundColor: '#27272a',
+    marginHorizontal: isWeb ? 20 : 0,
+    marginVertical: isWeb ? 0 : 20,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  leaderboardContainer: {
+    width: '100%',
+    alignItems: 'center',
+  },
+  productsContainer: {
+    width: '100%',
     alignItems: 'center',
   },
   title: {
@@ -191,7 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     color: '#facc15',
-    marginTop: 30,
+    marginBottom: 10,
     textAlign: 'center',
   },
   description: {
@@ -200,18 +165,22 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
   },
-  leaderItem: {
-    backgroundColor: '#1c1c1e',
+  leaderItemGradient: {
     width: '100%',
-    padding: 15,
+    maxWidth: 600,
     marginBottom: 12,
     borderRadius: 14,
+    shadowColor: '#4ade80',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
+    overflow: 'hidden',
+  },
+  leaderItem: {
+    padding: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 2,
   },
   rank: {
     fontSize: 24,
@@ -230,18 +199,22 @@ const styles = StyleSheet.create({
     color: '#34d399',
     fontSize: 16,
   },
-  productCard: {
-    backgroundColor: '#27272a',
+  productCardGradient: {
     width: '100%',
-    padding: 15,
-    borderRadius: 12,
+    maxWidth: 600,
     marginBottom: 12,
+    borderRadius: 12,
+    shadowColor: '#f87171',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    elevation: 4,
+    overflow: 'hidden',
     borderLeftWidth: 4,
-    borderLeftColor: '#f87171',
-    shadowColor: '#000',
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
+  },
+  productCard: {
+    padding: 15,
+    borderLeftWidth: 4,
   },
   productName: {
     color: '#fefefe',
@@ -256,10 +229,8 @@ const styles = StyleSheet.create({
   },
   productScore: {
     fontSize: 14,
-    color: '#f87171',
   },
-  lowScore: {
+  scoreValue: {
     fontWeight: 'bold',
-    color: '#ef4444',
   },
 });
