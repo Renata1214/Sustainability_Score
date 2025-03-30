@@ -58,3 +58,4 @@ CREATE TABLE brand_emissions (
         100 - ((emissions_intensity / 12.61) * 100)
     ) STORED
 );
+ 

@@ -1,18 +1,52 @@
-[
-  {
-    "user_id": "user_001",
-    "score": 876.91
-  },
-  {
-    "user_id": "user_002",
-    "score": 613.37
-  },
-  {
-    "user_id": "user_004",
-    "score": 402.99
-  },
-  {
-    "user_id": "user_003",
-    "score": 95.24
-  }
-]
+{
+  "leaderboard": [
+    {
+      "user_id": "user_001",
+      "score": 876.91
+    },
+    {
+      "user_id": "user_002",
+      "score": 613.37
+    },
+    {
+      "user_id": "user_004",
+      "score": 402.99
+    },
+    {
+      "user_id": "user_003",
+      "score": 95.24
+    }
+  ],
+  "harmful_products_user_001": [
+    {
+      "product_name": "Harvest Bowl (Sweetgreen)",
+      "store": "doordash",
+      "brand": "Sweetgreen",
+      "score": -20.663985272911766
+    },
+    {
+      "product_name": "Vegan Double Cheeseburger Combo",
+      "store": "doordash",
+      "brand": "Plant Power Fast Food",
+      "score": -20.663985272911766
+    },
+    {
+      "product_name": "Kombucha Tea (Ginger Citrus)",
+      "store": "doordash",
+      "brand": "Sweetgreen",
+      "score": -20.663985272911766
+    },
+    {
+      "product_name": "Spicy Tofu Stir Fry (Vegan Bistro)",
+      "store": "doordash",
+      "brand": "Local Restaurants",
+      "score": 8.598504814320592
+    },
+    {
+      "product_name": "Sustainable Packaging Fee",
+      "store": "doordash",
+      "brand": "Local Restaurants",
+      "score": 8.598504814320592
+    }
+  ]
+}
