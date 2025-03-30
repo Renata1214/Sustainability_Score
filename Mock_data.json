@@ -1,0 +1,729 @@
+{"users": [{
+    "user_id": "user_001",
+    "Examples" :[
+        {
+        "merchant": {
+            "id": 101,
+            "name": "Walmart Inc."
+        },
+        "transactions": [
+            {
+            "id": "txn-001",
+            "datetime": "2025-03-29T10:00:00+00:00",
+            "order_status": "ORDERED",
+            "payment_methods": [
+                {
+                "type": "CARD",
+                "brand": "VISA",
+                "last_four": "1234",
+                "transaction_amount": 15.47
+                }
+            ],
+            "price": {
+                "total": 15.47,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                "external_id": "GV12345",
+                "brand": "Great Value",
+                "name": "Great Value Whole Milk, 1 Gallon",
+                "url": "https://www.walmart.com/ip/123456789",
+                "quantity": 1,
+                "price": {
+                    "unit_price": 3.47,
+                    "total": 3.47
+                }
+                },
+                {
+                "external_id": "GV23456",
+                "brand": "Great Value",
+                "name": "Great Value White Bread, 20 oz",
+                "url": "https://www.walmart.com/ip/234567891",
+                "quantity": 1,
+                "price": {
+                    "unit_price": 2.00,
+                    "total": 2.00
+                }
+                }
+            ]
+            },
+            {
+            "id": "txn-002",
+            "datetime": "2025-03-29T11:15:00+00:00",
+            "order_status": "DELIVERED",
+            "payment_methods": [
+                {
+                "type": "CARD",
+                "brand": "MASTERCARD",
+                "last_four": "5678",
+                "transaction_amount": 28.99
+                }
+            ],
+            "price": {
+                "total": 28.99,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                "external_id": "EQ98765",
+                "brand": "Equate",
+                "name": "Equate Ibuprofen Tablets, 200 mg, 500 Count",
+                "url": "https://www.walmart.com/ip/345678912",
+                "quantity": 1,
+                "price": {
+                    "unit_price": 9.99,
+                    "total": 9.99
+                }
+                },
+                {
+                "external_id": "SC54321",
+                "brand": "Sam’s Choice",
+                "name": "Sam’s Choice Premium Angus Beef Patties, 2 lb",
+                "url": "https://www.walmart.com/ip/456789123",
+                "quantity": 1,
+                "price": {
+                    "unit_price": 19.00,
+                    "total": 19.00
+                }
+                }
+            ]
+            },
+            {
+            "id": "txn-003",
+            "datetime": "2025-03-29T14:30:00+00:00",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                "type": "CARD",
+                "brand": "AMEX",
+                "last_four": "9012",
+                "transaction_amount": 25.00
+                }
+            ],
+            "price": {
+                "total": 25.00,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                "external_id": "PC67890",
+                "brand": "Parent’s Choice",
+                "name": "Parent’s Choice Baby Wipes, 800 Count",
+                "url": "https://www.walmart.com/ip/567891234",
+                "quantity": 1,
+                "price": {
+                    "unit_price": 12.00,
+                    "total": 12.00
+                }
+                },
+                {
+                "external_id": "MS13579",
+                "brand": "Mainstays",
+                "name": "Mainstays Twin Sheet Set, Gray",
+                "url": "https://www.walmart.com/ip/678912345",
+                "quantity": 1,
+                "price": {
+                    "unit_price": 13.00,
+                    "total": 13.00
+                }
+                }
+            ]
+            }
+        ]
+        }, {
+        "merchant": {
+            "id": 12,
+            "name": "Target Corporation"
+        },
+        "transactions": [
+            {
+            "id": "txn-002",
+            "external_id": "user_001",
+            "datetime": "2025-03-05T16:12:30Z",
+            "url": "https://www.target.com/orders/txn-002",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                "external_id": "pm-002",
+                "type": "CARD",
+                "brand": "MASTERCARD",
+                "last_four": "5678",
+                "name": "John Doe",
+                "transaction_amount": 32.92
+                }
+            ],
+            "price": {
+                "sub_total": 32.92,
+                "adjustments": [],
+                "total": 32.92,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                "external_id": "prod-006",
+                "brand": "Good & Gather",
+                "name": "Good & Gather Organic Spinach, 5 oz",
+                "url": "https://www.target.com/ip/prod-006",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 2.49,
+                    "total": 2.49,
+                    "unit_price": 2.49
+                }
+                },
+                {
+                "external_id": "prod-007",
+                "brand": "Up & Up",
+                "name": "Up & Up Paper Towels, 6 Big Rolls",
+                "url": "https://www.target.com/ip/prod-007",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 5.79,
+                    "total": 5.79,
+                    "unit_price": 5.79
+                }
+                },
+                {
+                "external_id": "prod-008",
+                "brand": "Everspring",
+                "name": "Everspring All-Purpose Cleaner, Lemon & Mint, 28 fl oz",
+                "url": "https://www.target.com/ip/prod-008",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 3.29,
+                    "total": 3.29,
+                    "unit_price": 3.29
+                }
+                },
+                {
+                "external_id": "prod-009",
+                "brand": "Market Pantry",
+                "name": "Market Pantry Whole Wheat Bread, 20 oz",
+                "url": "https://www.target.com/ip/prod-009",
+                "quantity": 2,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 3.38,
+                    "total": 3.38,
+                    "unit_price": 1.69
+                }
+                },
+                {
+                "external_id": "prod-010",
+                "brand": "Cat & Jack",
+                "name": "Cat & Jack Kids' T-Shirt, Blue",
+                "url": "https://www.target.com/ip/prod-010",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 7.99,
+                    "total": 7.99,
+                    "unit_price": 7.99
+                }
+                },
+                {
+                "external_id": "prod-011",
+                "brand": "Good & Gather",
+                "name": "Good & Gather Organic Apple Juice, 64 fl oz",
+                "url": "https://www.target.com/ip/prod-011",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 9.98,
+                    "total": 9.98,
+                    "unit_price": 9.98
+                }
+                }
+            ]
+            }
+        ]
+        }, 
+        {
+        "merchant": {
+            "id": 40,
+            "name": "instacart"
+        },
+        "transactions": [
+            {
+            "id": "txn-003",
+            "external_id": "user_001",
+            "datetime": "2025-03-11T09:45:00Z",
+            "url": "https://www.instacart.com/orders/txn-003",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+                {
+                "external_id": "pm-003",
+                "type": "CARD",
+                "brand": "AMEX",
+                "last_four": "9012",
+                "name": "John Doe",
+                "transaction_amount": 35.25
+                }
+            ],
+            "price": {
+                "sub_total": 35.25,
+                "adjustments": [],
+                "total": 35.25,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                "external_id": "prod-012",
+                "brand": "O Organics",
+                "name": "O Organics Bananas, 2 lb",
+                "url": "https://www.instacart.com/ip/prod-012",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 2.50,
+                    "total": 2.50,
+                    "unit_price": 2.50
+                }
+                },
+                {
+                "external_id": "prod-013",
+                "brand": "365 by Whole Foods",
+                "name": "365 Organic Almond Milk, Unsweetened, 64 fl oz",
+                "url": "https://www.instacart.com/ip/prod-013",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 3.99,
+                    "total": 3.99,
+                    "unit_price": 3.99
+                }
+                },
+                {
+                "external_id": "prod-014",
+                "brand": "Open Nature",
+                "name": "Open Nature Cage-Free Eggs, 12 ct",
+                "url": "https://www.instacart.com/ip/prod-014",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 4.99,
+                    "total": 4.99,
+                    "unit_price": 4.99
+                }
+                },
+                {
+                "external_id": "prod-015",
+                "brand": "Signature Select",
+                "name": "Signature Select Organic Peanut Butter, 16 oz",
+                "url": "https://www.instacart.com/ip/prod-015",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 5.79,
+                    "total": 5.79,
+                    "unit_price": 5.79
+                }
+                },
+                {
+                "external_id": "prod-016",
+                "brand": "Instacart Organic",
+                "name": "Instacart Organic Kale, 12 oz",
+                "url": "https://www.instacart.com/ip/prod-016",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 3.99,
+                    "total": 3.99,
+                    "unit_price": 3.99
+                }
+                },
+                {
+                "external_id": "prod-017",
+                "brand": "365 by Whole Foods",
+                "name": "365 Organic Pasta, Penne Rigate, 16 oz",
+                "url": "https://www.instacart.com/ip/prod-017",
+                "quantity": 2,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 4.99,
+                    "total": 4.99,
+                    "unit_price": 2.50
+                }
+                },
+                {
+                "external_id": "prod-018",
+                "brand": "Open Nature",
+                "name": "Open Nature All-Natural Chicken Breast, 1 lb",
+                "url": "https://www.instacart.com/ip/prod-018",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 9.00,
+                    "total": 9.00,
+                    "unit_price": 9.00
+                }
+                }
+            ]
+            }
+        ]
+        }, {
+        "merchant": {
+            "id": 19,
+            "name": "doordash"
+        },
+        "transactions": [
+            {
+            "id": "txn-004",
+            "external_id": "user_001",
+            "datetime": "2025-03-15T19:05:12Z",
+            "url": "https://www.doordash.com/orders/txn-004",
+            "order_status": "DELIVERED",
+            "payment_methods": [
+                {
+                "external_id": "pm-004",
+                "type": "CARD",
+                "brand": "VISA",
+                "last_four": "6789",
+                "name": "John Doe",
+                "transaction_amount": 38.47
+                }
+            ],
+            "price": {
+                "sub_total": 38.47,
+                "adjustments": [],
+                "total": 38.47,
+                "currency": "USD"
+            },
+            "products": [
+                {
+                "external_id": "prod-019",
+                "brand": "Sweetgreen",
+                "name": "Harvest Bowl (Sweetgreen)",
+                "url": "https://www.doordash.com/store/sweetgreen/txn-004",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 12.99,
+                    "total": 12.99,
+                    "unit_price": 12.99
+                }
+                },
+                {
+                "external_id": "prod-020",
+                "brand": "Plant Power Fast Food",
+                "name": "Vegan Double Cheeseburger Combo",
+                "url": "https://www.doordash.com/store/plant-power/txn-004",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 13.49,
+                    "total": 13.49,
+                    "unit_price": 13.49
+                }
+                },
+                {
+                "external_id": "prod-021",
+                "brand": "Local Restaurants",
+                "name": "Spicy Tofu Stir Fry (Vegan Bistro)",
+                "url": "https://www.doordash.com/store/vegan-bistro/txn-004",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 9.99,
+                    "total": 9.99,
+                    "unit_price": 9.99
+                }
+                },
+                {
+                "external_id": "prod-022",
+                "brand": "Sweetgreen",
+                "name": "Kombucha Tea (Ginger Citrus)",
+                "url": "https://www.doordash.com/store/sweetgreen/txn-004",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 1.50,
+                    "total": 1.50,
+                    "unit_price": 1.50
+                }
+                },
+                {
+                "external_id": "prod-023",
+                "brand": "Local Restaurants",
+                "name": "Sustainable Packaging Fee",
+                "url": "https://www.doordash.com/store/eco-fee/txn-004",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                    "sub_total": 0.50,
+                    "total": 0.50,
+                    "unit_price": 0.50
+                }
+                }
+            ]
+            }
+        ]
+        }
+        ]
+        },
+    {
+    "user_id": "user_002",
+    "Examples" :[{
+        "merchant": {
+          "id": 44,
+          "name": "Amazon"
+        },
+        "transactions": [
+          {
+            "id": "txn-005",
+            "external_id": "user_002",
+            "datetime": "2025-03-20T14:45:22Z",
+            "url": "https://www.amazon.com/orders/txn-005",
+            "order_status": "DELIVERED",
+            "payment_methods": [
+              {
+                "external_id": "pm-005",
+                "type": "CARD",
+                "brand": "VISA",
+                "last_four": "8822",
+                "name": "Alex Morgan",
+                "transaction_amount": 42.85
+              }
+            ],
+            "price": {
+              "sub_total": 42.85,
+              "adjustments": [],
+              "total": 42.85,
+              "currency": "USD"
+            },
+            "products": [
+              {
+                "external_id": "prod-024",
+                "brand": "Amazon Basics",
+                "name": "Amazon Basics Recycled Copy Paper, 500 Sheets",
+                "url": "https://www.amazon.com/ip/prod-024",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 6.99,
+                  "total": 6.99,
+                  "unit_price": 6.99
+                }
+              },
+              {
+                "external_id": "prod-025",
+                "brand": "Amazon Basics",
+                "name": "Amazon Basics Rechargeable Batteries, AA, 12-Pack",
+                "url": "https://www.amazon.com/ip/prod-025",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 14.99,
+                  "total": 14.99,
+                  "unit_price": 14.99
+                }
+              },
+              {
+                "external_id": "prod-026",
+                "brand": "Amazon Basics",
+                "name": "Amazon Basics Compostable Trash Bags, 13 Gallon",
+                "url": "https://www.amazon.com/ip/prod-026",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 10.99,
+                  "total": 10.99,
+                  "unit_price": 10.99
+                }
+              },
+              {
+                "external_id": "prod-027",
+                "brand": "Amazon Basics",
+                "name": "Amazon Basics Organic Cotton Towels, 2-Pack",
+                "url": "https://www.amazon.com/ip/prod-027",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 9.88,
+                  "total": 9.88,
+                  "unit_price": 9.88
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "merchant": {
+          "id": 36,
+          "name": "uber eats"
+        },
+        "transactions": [
+          {
+            "id": "txn-006",
+            "external_id": "user_002",
+            "datetime": "2025-03-23T18:35:10Z",
+            "url": "https://www.ubereats.com/orders/txn-006",
+            "order_status": "DELIVERED",
+            "payment_methods": [
+              {
+                "external_id": "pm-006",
+                "type": "CARD",
+                "brand": "MASTERCARD",
+                "last_four": "4411",
+                "name": "Alex Morgan",
+                "transaction_amount": 36.46
+              }
+            ],
+            "price": {
+              "sub_total": 36.46,
+              "adjustments": [],
+              "total": 36.46,
+              "currency": "USD"
+            },
+            "products": [
+              {
+                "external_id": "prod-028",
+                "brand": "Plant Power Fast Food",
+                "name": "Plant-Based Chicken Wrap Combo",
+                "url": "https://www.ubereats.com/store/plant-power/txn-006",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 12.99,
+                  "total": 12.99,
+                  "unit_price": 12.99
+                }
+              },
+              {
+                "external_id": "prod-029",
+                "brand": "Uber Eats",
+                "name": "Eco-Friendly Cutlery Kit",
+                "url": "https://www.ubereats.com/store/uber-eats/txn-006",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 1.99,
+                  "total": 1.99,
+                  "unit_price": 1.99
+                }
+              },
+              {
+                "external_id": "prod-030",
+                "brand": "Local Restaurants",
+                "name": "Grilled Portobello Mushroom Sandwich (Green Café)",
+                "url": "https://www.ubereats.com/store/green-cafe/txn-006",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 9.99,
+                  "total": 9.99,
+                  "unit_price": 9.99
+                }
+              },
+              {
+                "external_id": "prod-031",
+                "brand": "Plant Power Fast Food",
+                "name": "Vegan Chocolate Shake",
+                "url": "https://www.ubereats.com/store/plant-power/txn-006",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 5.49,
+                  "total": 5.49,
+                  "unit_price": 5.49
+                }
+              },
+              {
+                "external_id": "prod-032",
+                "brand": "Uber Eats",
+                "name": "Sustainable Delivery Fee",
+                "url": "https://www.ubereats.com/store/uber-eats/txn-006",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 6.00,
+                  "total": 6.00,
+                  "unit_price": 6.00
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "merchant": {
+          "id": 84,
+          "name": "airbnb"
+        },
+        "transactions": [
+          {
+            "id": "txn-007",
+            "external_id": "user_002",
+            "datetime": "2025-03-27T11:10:00Z",
+            "url": "https://www.airbnb.com/reservation/txn-007",
+            "order_status": "COMPLETED",
+            "payment_methods": [
+              {
+                "external_id": "pm-007",
+                "type": "CARD",
+                "brand": "VISA",
+                "last_four": "9988",
+                "name": "Alex Morgan",
+                "transaction_amount": 106.25
+              }
+            ],
+            "price": {
+              "sub_total": 106.25,
+              "adjustments": [],
+              "total": 106.25,
+              "currency": "USD"
+            },
+            "products": [
+              {
+                "external_id": "prod-033",
+                "brand": "Eco Stays",
+                "name": "2-Night Stay at Eco-Friendly Treehouse Retreat",
+                "url": "https://www.airbnb.com/rooms/eco-treehouse",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 89.00,
+                  "total": 89.00,
+                  "unit_price": 89.00
+                }
+              },
+              {
+                "external_id": "prod-034",
+                "brand": "Eco Stays",
+                "name": "Sustainable Cleaning Fee",
+                "url": "https://www.airbnb.com/add-ons/eco-cleaning",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 10.00,
+                  "total": 10.00,
+                  "unit_price": 10.00
+                }
+              },
+              {
+                "external_id": "prod-035",
+                "brand": "Eco Stays",
+                "name": "Green Tourism Support Fee",
+                "url": "https://www.airbnb.com/add-ons/green-support",
+                "quantity": 1,
+                "eligibility": [],
+                "price": {
+                  "sub_total": 7.25,
+                  "total": 7.25,
+                  "unit_price": 7.25
+                }
+              }
+            ]
+          }
+        ]
+      }      
+      ]
+    }
+    ]
+}
+

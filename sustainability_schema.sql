@@ -1,10 +1,9 @@
-
 -- Drop existing tables if needed
 DROP TABLE IF EXISTS purchases;
 DROP TABLE IF EXISTS scores;
 DROP TABLE IF EXISTS leaderboard;
-DROP TABLE IF EXISTS store_scores;
-DROP TABLE IF EXISTS brand_scores;
+DROP TABLE IF EXISTS store_emissions;
+DROP TABLE IF EXISTS brand_emissions;
 
 -- Table 1: Raw purchase data
 CREATE TABLE purchases (
@@ -38,63 +37,24 @@ CREATE TABLE leaderboard (
     last_updated TEXT DEFAULT CURRENT_TIMESTAMP
 );
 
--- Reference Table: Store point values
-CREATE TABLE store_scores (
-    store TEXT PRIMARY KEY,
-    points INTEGER NOT NULL
+-- Store emissions table
+CREATE TABLE store_emissions (
+    name TEXT PRIMARY KEY,
+    co2_emissions REAL NOT NULL,
+    revenue REAL NOT NULL,
+    emissions_intensity REAL NOT NULL,
+    sustainability_score REAL GENERATED ALWAYS AS (
+        100 - ((emissions_intensity / 501) * 100)
+    ) STORED
 );
 
--- Reference Table: Brand point values
-CREATE TABLE brand_scores (
-    brand TEXT PRIMARY KEY,
-    points INTEGER NOT NULL
+-- Brand emissions table
+CREATE TABLE brand_emissions (
+    name TEXT PRIMARY KEY,
+    co2_emissions REAL NOT NULL,
+    revenue REAL NOT NULL,
+    emissions_intensity REAL NOT NULL,
+    sustainability_score REAL GENERATED ALWAYS AS (
+        100 - ((emissions_intensity / 12.61) * 100)
+    ) STORED
 );
-
--- Sample store points
-INSERT INTO store_scores (store, points) VALUES
-('airbnb', 2),
-('american airlines', 1),
-('instacart', 3),
-('uber eats', 2),
-('doordash', 2),
-('spotify', 4),
-('uber', 2);
-
--- Sample brand points
--- Extended brand scores for Target, Walmart, Instacart, and DoorDash
-INSERT INTO brand_scores (brand, points) VALUES
--- Target brands
-('Good & Gather', 5),
-('Up & Up', 4),
-('Everspring', 4),
-('Cat & Jack', 3),
-('Archer Farms', 3),
-('Threshold', 2),
-('Market Pantry', 3),
-('Made By Design', 2),
-
--- Walmart brands
-('Great Value', 4),
-('Equate', 4),
-('Sam’s Choice', 5),
-('Parent’s Choice', 5),
-('Mainstays', 3),
-('Wonder Nation', 2),
-('Time and Tru', 3),
-('George', 2),
-
--- Instacart brands
-('O Organics', 5),
-('365 by Whole Foods', 5),
-('Signature Select', 3),
-('Open Nature', 4),
-('Instacart Organic', 4),
-
--- DoorDash / food brands
-('Local Restaurants', 3),
-('Plant Power Fast Food', 5),
-('Sweetgreen', 5),
-('Chipotle', 4),
-('Panda Express', 2),
-('McDonald’s', 1);
-
