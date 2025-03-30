@@ -1,66 +1,70 @@
 import { Tabs } from 'expo-router';
-import { Leaf, Trophy, MessageSquare } from 'lucide-react-native';
-import { View, StyleSheet, SafeAreaView, StatusBar } from 'react-native';
+import { Leaf, Trophy, MessageCircle } from 'lucide-react-native';
+import { View, StyleSheet } from 'react-native';
 
 export default function TabLayout() {
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#1a1a1a" />
-
-      {/* Tab Navigation - keeping it minimal with no header */}
-      <Tabs
-        screenOptions={{
-          tabBarActiveTintColor: '#4ade80',
-          tabBarInactiveTintColor: '#999',
-          tabBarStyle: styles.tabBar,
-          headerShown: false,
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: styles.tabBar,
+        tabBarActiveTintColor: '#4ade80',
+        tabBarInactiveTintColor: '#6b7280',
+        tabBarShowLabel: true,
+        tabBarLabelStyle: styles.tabLabel,
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'My Impact',
+          tabBarIcon: ({ color, size }) => (
+            <View style={styles.iconContainer}>
+              <Leaf size={size} color={color} />
+            </View>
+          ),
         }}
-      >
-        <Tabs.Screen
-          name="index"
-          options={{
-            title: 'Dashboard',
-            tabBarIcon: ({ color }) => <Leaf size={24} color={color} />,
-          }}
-        />
-        <Tabs.Screen
-          name="achievements"
-          options={{
-            title: 'Achievements',
-            tabBarIcon: ({ color }) => <Trophy size={24} color={color} />,
-          }}
-        />
-        <Tabs.Screen
-          name="community"
-          options={{
-            title: 'Community',
-            tabBarIcon: ({ color }) => (
-              <MessageSquare size={24} color={color} />
-            ),
-          }}
-        />
-        <Tabs.Screen
-          name="impact"
-          options={{
-            title: 'Impact',
-            tabBarIcon: ({ color }) => <Leaf size={24} color={color} />,
-            href: null, // This makes it accessible only via direct navigation, not via tab
-          }}
-        />
-      </Tabs>
-    </SafeAreaView>
+      />
+      <Tabs.Screen
+        name="leaderboard"
+        options={{
+          title: 'Leaderboard',
+          tabBarIcon: ({ color, size }) => (
+            <View style={styles.iconContainer}>
+              <Trophy size={size} color={color} />
+            </View>
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Eco Chat',
+          tabBarIcon: ({ color, size }) => (
+            <View style={styles.iconContainer}>
+              <MessageCircle size={size} color={color} />
+            </View>
+          ),
+        }}
+      />
+    </Tabs>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1a1a1a',
-  },
   tabBar: {
-    backgroundColor: '#2a2a2a',
-    borderTopColor: '#333',
-    paddingTop: 10,
+    backgroundColor: '#1a1a1a',
+    borderTopWidth: 1,
+    borderTopColor: '#2a2a2a',
     height: 60,
+    paddingBottom: 8,
+    paddingTop: 8,
+  },
+  tabLabel: {
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
