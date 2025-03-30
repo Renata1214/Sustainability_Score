@@ -9,6 +9,7 @@
     "lint": "expo lint",
     "test": "jest"
   },
+  
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
     "@google/generative-ai": "^0.2.1",
