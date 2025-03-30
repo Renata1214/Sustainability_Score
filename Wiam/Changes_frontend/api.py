@@ -3,6 +3,8 @@ from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
+#CORS(app, origins=["https://expert-fiesta-6qq9pwq9694frgj4-8081.app.github.dev"])  # 👈 Allow this origin only
+#CORS(app)  # 👈 Allow this origin only
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route("/leaderboard")
@@ -16,7 +18,7 @@ def leaderboard():
 
 @app.route("/")
 def home():
-    return "API is running"
+    return "API is running!"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
