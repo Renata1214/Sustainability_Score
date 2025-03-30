@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaderboard</title>
+  <style>
+    body { font-family: sans-serif; background: #111; color: white; padding: 2em; }
+    .user { background: #1e1e1e; padding: 1em; margin: 1em 0; border-radius: 8px; }
+    .score { color: #4ade80; }
+  </style>
+</head>
+<body>
+  <h1>🏆 Global Rankings</h1>
+  {% for user in leaderboard %}
+    <div class="user">
+      <strong>{{ loop.index }}. {{ user.user_id }}</strong>
+      <p class="score">{{ user.score }} points</p>
+    </div>
+  {% endfor %}
+</body>
+</html>

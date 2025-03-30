@@ -1,26 +1,9 @@
 // app/(tabs)/leaderboard.tsx
-import { Printer } from 'lucide-react-native';
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
+import leaderboardData from '../data/leaderboard.json'; // 👈 Direct import, no fetch!
 
 export default function LeaderboardScreen() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch('https://expert-fiesta-6qq9pwq9694frgj4-5000.app.github.dev/leaderboard')
-      .then((res) => res.json())
-      .then((json) => {
-        console.log("📦 API returned:", json); // 👈 Check this in browser console
-        setData(json);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("❌ Fetch error:", err);
-        setLoading(false);
-      });
-  }, []);
-  
   const getMedalEmoji = (index: number) => {
     if (index === 0) return '🥇';
     if (index === 1) return '🥈';
@@ -28,20 +11,18 @@ export default function LeaderboardScreen() {
     return `${index + 1}`;
   };
 
-  if (loading) return <ActivityIndicator size="large" color="#4ade80" style={{ flex: 1 }} />;
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>🏆 Global Rankings</Text>
       <FlatList
-        data={data}
+        data={leaderboardData}
         keyExtractor={(item) => item.user_id}
         renderItem={({ item, index }) => (
           <View style={styles.item}>
             <Text style={styles.rank}>{getMedalEmoji(index)}</Text>
             <View>
               <Text style={styles.name}>{item.user_id}</Text>
-              <Text style={styles.score}>{item.score} points</Text>
+              <Text style={styles.score}>{item.score.toFixed(2)} points</Text>
             </View>
           </View>
         )}
