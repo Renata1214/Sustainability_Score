@@ -1,7 +1,24 @@
-import { View, Text, StyleSheet, Image, ScrollView, Pressable, Dimensions, Linking } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+  Image,
+  Dimensions,
+  Linking,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Leaf, Droplet, Wind, Sun, TrendingUp, Award, ArrowUp, ArrowDown, Info } from 'lucide-react-native';
+import {
+  Leaf,
+  Sun,
+  TrendingUp,
+  ChevronRight,
+  Calendar,
+  Award,
+} from 'lucide-react-native';
 import { LineChart } from 'react-native-chart-kit';
+import { Link } from 'expo-router';
 
 interface MetricCardProps {
   icon: typeof Leaf;
@@ -11,55 +28,45 @@ interface MetricCardProps {
   color: string;
 }
 
-interface ImpactProduct {
-  name: string;
-  image: string;
-  impact: number;
-  description: string;
+function MetricCard({
+  icon: Icon,
+  title,
+  value,
+  change,
+  color,
+}: MetricCardProps) {
+  const isPositive = change.startsWith('+');
+
+  return (
+    <Pressable
+      style={({ pressed }) => [
+        styles.metricCard,
+        pressed && styles.metricCardPressed,
+      ]}
+    >
+      <Icon size={24} color={color} />
+      <Text style={styles.metricTitle}>{title}</Text>
+      <Text style={styles.metricValue}>{value}</Text>
+      <Text
+        style={[
+          styles.metricChange,
+          { color: isPositive ? '#4ade80' : '#ef4444' },
+        ]}
+      >
+        {change}%
+      </Text>
+    </Pressable>
+  );
 }
 
 interface SustainableInvestment {
   name: string;
   ticker: string;
   price: number;
-  sustainabilityRating: number;
   marketCap: string;
+  sustainabilityRating: number;
   sector: string;
   potentialImprovement: number;
-}
-
-function ImpactProductCard({ product }: { product: ImpactProduct }) {
-  const isPositive = product.impact > 0;
-  
-  return (
-    <Pressable
-      style={({ pressed }) => [
-        styles.productCard,
-        pressed && styles.productCardPressed
-      ]}>
-      <Image
-        source={{ uri: product.image }}
-        style={styles.productImage}
-      />
-      <View style={styles.productInfo}>
-        <Text style={styles.productName}>{product.name}</Text>
-        <Text style={styles.productDescription}>{product.description}</Text>
-        <View style={styles.impactContainer}>
-          {isPositive ? (
-            <ArrowUp size={16} color="#4ade80" />
-          ) : (
-            <ArrowDown size={16} color="#ef4444" />
-          )}
-          <Text style={[
-            styles.impactText,
-            { color: isPositive ? '#4ade80' : '#ef4444' }
-          ]}>
-            {Math.abs(product.impact)}% impact
-          </Text>
-        </View>
-      </View>
-    </Pressable>
-  );
 }
 
 function InvestmentCard({ investment }: { investment: SustainableInvestment }) {
@@ -73,8 +80,9 @@ function InvestmentCard({ investment }: { investment: SustainableInvestment }) {
       onPress={handlePress}
       style={({ pressed }) => [
         styles.investmentCard,
-        pressed && styles.investmentCardPressed
-      ]}>
+        pressed && styles.investmentCardPressed,
+      ]}
+    >
       <View style={styles.investmentHeader}>
         <View>
           <Text style={styles.investmentName}>{investment.name}</Text>
@@ -88,121 +96,141 @@ function InvestmentCard({ investment }: { investment: SustainableInvestment }) {
       <View style={styles.investmentDetails}>
         <View style={styles.ratingContainer}>
           <Text style={styles.ratingLabel}>Sustainability Rating</Text>
-          <Text style={styles.rating}>{investment.sustainabilityRating}/100</Text>
+          <Text style={styles.rating}>
+            {investment.sustainabilityRating}/100
+          </Text>
         </View>
         <View style={styles.sectorContainer}>
           <Text style={styles.sectorLabel}>Sector</Text>
           <Text style={styles.sector}>{investment.sector}</Text>
         </View>
         <View style={styles.improvementContainer}>
-          <Text style={styles.improvementLabel}>Potential Score Improvement</Text>
-          <Text style={styles.improvement}>+{investment.potentialImprovement} pts</Text>
+          <Text style={styles.improvementLabel}>
+            Potential Score Improvement
+          </Text>
+          <Text style={styles.improvement}>
+            +{investment.potentialImprovement} pts
+          </Text>
         </View>
       </View>
     </Pressable>
   );
 }
 
-export default function ImpactScreen() {
-  const sustainabilityScore = 85;
+function TipCard({ tip }: { tip: { title: string; text: string } }) {
+  return (
+    <View style={styles.tipCard}>
+      <Leaf size={20} color="#4ade80" />
+      <View style={styles.tipContent}>
+        <Text style={styles.tipTitle}>{tip.title}</Text>
+        <Text style={styles.tipText}>{tip.text}</Text>
+      </View>
+    </View>
+  );
+}
+
+export default function DashboardScreen() {
+  // Only keeping Carbon Footprint and Investment Credit (renamed from Solar Credit)
   const metrics: MetricCardProps[] = [
-    { icon: Leaf, title: 'Carbon Footprint', value: '2.5 tons', change: '-0.3', color: '#4ade80' },
-    { icon: Droplet, title: 'Water Usage', value: '120L/day', change: '-5%', color: '#60a5fa' },
-    { icon: Wind, title: 'Energy Saved', value: '45 kWh', change: '+12%', color: '#818cf8' },
-    { icon: Sun, title: 'Solar Credits', value: '250 pts', change: '+25', color: '#fbbf24' },
-    { icon: TrendingUp, title: 'Eco Score', value: '92/100', change: '+8', color: '#f472b6' },
-    { icon: Award, title: 'Green Badges', value: '12 earned', change: '+2', color: '#a78bfa' },
-  ];
-
-  const historicalData = {
-    labels: ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
-    datasets: [{
-      data: [75, 78, 80, 82, 84, 85],
-    }],
-  };
-
-  const impactProducts: ImpactProduct[] = [
     {
-      name: 'Reusable Water Bottle',
-      image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8',
-      impact: 15,
-      description: 'Eliminated 200+ single-use plastic bottles annually',
+      icon: Leaf,
+      title: 'Carbon Footprint',
+      value: '2.5 tons',
+      change: '-0.3',
+      color: '#4ade80',
     },
     {
-      name: 'Fast Fashion Purchase',
-      image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f',
-      impact: -10,
-      description: 'High water usage and carbon emissions in production',
-    },
-    {
-      name: 'Solar Panels',
-      image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276',
-      impact: 25,
-      description: 'Reduced household carbon emissions by 60%',
-    },
-    {
-      name: 'Local Produce',
-      image: 'https://images.unsplash.com/photo-1488459716781-31db52582fe9',
-      impact: 8,
-      description: 'Reduced transportation emissions and supported local farming',
+      icon: Sun,
+      title: 'Investment Credit',
+      value: '250 pts',
+      change: '+25',
+      color: '#fbbf24',
     },
   ];
 
   const investments: SustainableInvestment[] = [
     {
-      name: 'Green Energy Corp',
-      ticker: 'GEC',
-      price: 45.67,
+      name: 'Green Energy Fund',
+      ticker: 'GEF',
+      price: 78.42,
+      marketCap: '$2.8B',
       sustainabilityRating: 92,
-      marketCap: '5.2B',
       sector: 'Renewable Energy',
-      potentialImprovement: 3,
+      potentialImprovement: 12,
     },
     {
-      name: 'Sustainable Tech',
-      ticker: 'STECH',
-      price: 128.45,
+      name: 'Sustainable Tech Corp',
+      ticker: 'STC',
+      price: 145.67,
+      marketCap: '$8.1B',
       sustainabilityRating: 88,
-      marketCap: '12.8B',
       sector: 'Technology',
-      potentialImprovement: 2,
+      potentialImprovement: 9,
     },
     {
       name: 'Clean Water Solutions',
       ticker: 'CWS',
-      price: 34.21,
+      price: 52.13,
+      marketCap: '$1.5B',
       sustainabilityRating: 95,
-      marketCap: '3.1B',
       sector: 'Utilities',
-      potentialImprovement: 4,
+      potentialImprovement: 15,
     },
   ];
 
+  const tips = [
+    {
+      title: 'Reduce Standby Power',
+      text: 'Unplug electronics when not in use to save up to 10% on your energy bill.',
+    },
+    {
+      title: 'Water-Wise Gardening',
+      text: 'Water plants in the early morning to reduce evaporation and water waste.',
+    },
+  ];
+
+  const weeklyData = {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [
+      {
+        data: [85, 83, 90, 87, 92, 95, 91],
+      },
+    ],
+  };
+
   return (
-    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}
+    >
+      {/* Updated Header with gradient */}
       <LinearGradient
-        colors={['#1a1a1a', '#2a2a2a']}
-        style={styles.header}>
-        <View style={styles.scoreSection}>
-          <Text style={styles.title}>Sustainability Score</Text>
-          <View style={styles.scoreContainer}>
-            <Text style={styles.score}>{sustainabilityScore}</Text>
-            <Text style={styles.maxScore}>/100</Text>
-          </View>
-          <Text style={styles.subtitle}>You're in the top 15% of eco-conscious users!</Text>
-        </View>
-        <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1501084817091-258c42bd1b4f' }}
-          style={styles.backgroundImage}
-        />
+        colors={['#3a9561', '#4ade80']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.header}
+      >
+        <Text style={styles.headerTitle}>Sustainify</Text>
+        <Text style={styles.headerSubtitle}>What you save, saves you!</Text>
       </LinearGradient>
 
-      <View style={styles.chartContainer}>
-        <Text style={styles.sectionTitle}>Score History</Text>
+      {/* Add greeting to score container to display next to score circle */}
+      <View style={styles.scoreContainer}>
+        <View style={styles.scoreRow}>
+          <View style={styles.scoreCircle}>
+            <Text style={styles.score}>857.04</Text>
+            <Text style={styles.scoreLabel}>Today's Score</Text>
+          </View>
+          <Text style={styles.greeting}>Hello, Eco-Warrior!</Text>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>This Week's Progress</Text>
         <LineChart
-          data={historicalData}
+          data={weeklyData}
           width={Dimensions.get('window').width - 40}
-          height={220}
+          height={180}
           chartConfig={{
             backgroundColor: '#2a2a2a',
             backgroundGradientFrom: '#2a2a2a',
@@ -219,25 +247,62 @@ export default function ImpactScreen() {
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Top Impact Products</Text>
-        {impactProducts.map((product, index) => (
-          <ImpactProductCard key={index} product={product} />
+        <Text style={styles.sectionTitle}>Sustainability Metrics</Text>
+        <View style={styles.metricsContainer}>
+          {metrics.map((metric, index) => (
+            <MetricCard key={index} {...metric} />
+          ))}
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Investment Opportunities</Text>
+        {investments.map((investment, index) => (
+          <InvestmentCard key={index} investment={investment} />
         ))}
       </View>
 
       <View style={styles.section}>
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Sustainable Investments</Text>
-          <Pressable style={styles.infoButton}>
-            <Info size={16} color="#666" />
-          </Pressable>
-        </View>
-        <Text style={styles.disclaimer}>
-          Investment information is for educational purposes only. Past performance does not guarantee future results.
-        </Text>
-        {investments.map((investment, index) => (
-          <InvestmentCard key={index} investment={investment} />
+        <Text style={styles.sectionTitle}>Eco Tips</Text>
+        {tips.map((tip, index) => (
+          <TipCard key={index} tip={tip} />
         ))}
+      </View>
+
+      <View style={styles.communityPreview}>
+        <LinearGradient
+          colors={['rgba(74, 222, 128, 0.2)', 'rgba(74, 222, 128, 0.05)']}
+          style={styles.communityGradient}
+        >
+          <View style={styles.communityContent}>
+            <View>
+              <Text style={styles.communityTitle}>
+                Join the Community Challenge
+              </Text>
+              <Text style={styles.communityDescription}>
+                Plant a tree this weekend and earn 500 Green Points!
+              </Text>
+            </View>
+            <Pressable
+              style={styles.communityButton}
+              onPress={() =>
+                Linking.openURL(
+                  'https://www.eea.europa.eu/en/topics/in-depth/sustainability-challenges'
+                )
+              }
+            >
+              <Text style={styles.communityButtonText}>Join</Text>
+            </Pressable>
+          </View>
+        </LinearGradient>
+      </View>
+
+      {/* Added Footer */}
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          HackPrinceton 2025 | Major League Hacking
+        </Text>
+        <Text style={styles.footerText}>Copyrights reserved.</Text>
       </View>
     </ScrollView>
   );
@@ -250,74 +315,70 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     alignItems: 'center',
+    paddingBottom: 30,
   },
   header: {
-    padding: 20,
-    height: 300,
+    padding: 25,
     width: '100%',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#fff',
+    fontFamily: 'System', // Using system font, can be changed to a custom font
+  },
+  headerSubtitle: {
+    fontSize: 18,
+    color: '#fff',
+    marginTop: 8,
+    fontStyle: 'italic',
+  },
+  scoreContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  scoreCircle: {
+    width: 140,
+    height: 140,
+    borderRadius: 70,
+    backgroundColor: 'rgba(74, 222, 128, 0.2)',
+    borderWidth: 2,
+    borderColor: '#4ade80',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  backgroundImage: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    opacity: 0.1,
-  },
-  scoreSection: {
-    alignItems: 'center',
-    zIndex: 1,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#4ade80',
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  scoreContainer: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  },
   score: {
-    fontSize: 72,
+    fontSize: 32,
     fontWeight: 'bold',
     color: '#4ade80',
   },
-  maxScore: {
-    fontSize: 24,
-    color: '#666',
-    marginBottom: 15,
+  scoreLabel: {
+    fontSize: 14,
+    color: '#999',
+    marginTop: 5,
   },
-  chartContainer: {
+  section: {
     padding: 20,
     width: '100%',
     maxWidth: 800,
-    alignItems: 'center',
   },
-  chart: {
-    marginVertical: 8,
-    borderRadius: 16,
-    alignSelf: 'center',
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 15,
   },
   metricsContainer: {
-    padding: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    maxWidth: 800,
-    width: '100%',
   },
   metricCard: {
     backgroundColor: '#2a2a2a',
     borderRadius: 15,
-    padding: 20,
+    padding: 15,
     width: '48%',
     marginBottom: 15,
   },
@@ -332,68 +393,13 @@ const styles = StyleSheet.create({
   },
   metricValue: {
     color: '#fff',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     marginTop: 5,
   },
   metricChange: {
     fontSize: 14,
     marginTop: 5,
-  },
-  section: {
-    padding: 20,
-    width: '100%',
-    maxWidth: 800,
-  },
-  sectionHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 10,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 15,
-  },
-  productCard: {
-    backgroundColor: '#2a2a2a',
-    borderRadius: 15,
-    marginBottom: 15,
-    overflow: 'hidden',
-    flexDirection: 'row',
-  },
-  productCardPressed: {
-    opacity: 0.9,
-    transform: [{ scale: 0.98 }],
-  },
-  productImage: {
-    width: 100,
-    height: 100,
-  },
-  productInfo: {
-    flex: 1,
-    padding: 15,
-  },
-  productName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 5,
-  },
-  productDescription: {
-    fontSize: 14,
-    color: '#999',
-    marginBottom: 10,
-  },
-  impactContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  impactText: {
-    marginLeft: 5,
-    fontSize: 14,
     fontWeight: 'bold',
   },
   investmentCard: {
@@ -409,8 +415,7 @@ const styles = StyleSheet.create({
   investmentHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 15,
+    marginBottom: 10,
   },
   investmentName: {
     fontSize: 16,
@@ -419,72 +424,153 @@ const styles = StyleSheet.create({
   },
   investmentTicker: {
     fontSize: 14,
-    color: '#666',
+    color: '#999',
     marginTop: 2,
   },
   priceContainer: {
     alignItems: 'flex-end',
   },
   price: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
-    color: '#4ade80',
+    color: '#fff',
   },
   marketCap: {
     fontSize: 14,
-    color: '#666',
+    color: '#999',
     marginTop: 2,
   },
   investmentDetails: {
-    borderTopWidth: 1,
-    borderTopColor: '#333',
-    paddingTop: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
   },
   ratingContainer: {
-    marginBottom: 10,
+    flex: 1,
   },
   ratingLabel: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 2,
+    fontSize: 12,
+    color: '#999',
   },
   rating: {
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  sectorContainer: {
-    marginBottom: 10,
-  },
-  sectorLabel: {
     fontSize: 14,
-    color: '#666',
-    marginBottom: 2,
-  },
-  sector: {
-    fontSize: 16,
-    color: '#fff',
-  },
-  improvementContainer: {
-    marginTop: 5,
-  },
-  improvementLabel: {
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 2,
-  },
-  improvement: {
-    fontSize: 16,
     color: '#4ade80',
     fontWeight: 'bold',
+    marginTop: 3,
   },
-  infoButton: {
-    padding: 5,
+  sectorContainer: {
+    flex: 1,
   },
-  disclaimer: {
+  sectorLabel: {
     fontSize: 12,
-    color: '#666',
-    fontStyle: 'italic',
+    color: '#999',
+  },
+  sector: {
+    fontSize: 14,
+    color: '#fff',
+    marginTop: 3,
+  },
+  improvementContainer: {
+    flex: 1,
+  },
+  improvementLabel: {
+    fontSize: 12,
+    color: '#999',
+  },
+  improvement: {
+    fontSize: 14,
+    color: '#fbbf24',
+    fontWeight: 'bold',
+    marginTop: 3,
+  },
+  tipCard: {
+    backgroundColor: '#2a2a2a',
+    borderRadius: 15,
+    padding: 15,
     marginBottom: 15,
+    flexDirection: 'row',
+  },
+  tipContent: {
+    marginLeft: 15,
+    flex: 1,
+  },
+  tipTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 5,
+  },
+  tipText: {
+    fontSize: 14,
+    color: '#999',
+  },
+  chart: {
+    marginVertical: 8,
+    borderRadius: 16,
+    alignSelf: 'center',
+  },
+  communityPreview: {
+    padding: 20,
+    width: '100%',
+    maxWidth: 800,
+  },
+  communityGradient: {
+    borderRadius: 15,
+    overflow: 'hidden',
+  },
+  communityContent: {
+    padding: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  communityTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 5,
+  },
+  communityDescription: {
+    fontSize: 14,
+    color: '#999',
+    maxWidth: '80%',
+  },
+  communityButton: {
+    backgroundColor: '#4ade80',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+  },
+  communityButtonText: {
+    color: '#1a1a1a',
+    fontWeight: 'bold',
+  },
+  footer: {
+    width: '100%',
+    padding: 20,
+    backgroundColor: '#2a2a2a',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  footerText: {
+    color: '#999',
+    fontSize: 14,
+    textAlign: 'center',
+    marginBottom: 5,
+  },
+
+  scoreRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 20,
+  },
+
+  greeting: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginLeft: 20,
   },
 });
