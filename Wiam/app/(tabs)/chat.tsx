@@ -82,7 +82,7 @@ export default function ChatScreen() {
           <View style={styles.welcomeContainer}>
             <Text style={styles.welcomeTitle}>AI Sustainability Assistant</Text>
             <Text style={styles.welcomeText}>
-              Ask me anything about your shopping history, your environmental print, or for sustainable alternatives.
+              Ask me anything about your shopping history, your environmental print, or for sustainable and healthy alternatives.
             </Text>
           </View>
           <View style={styles.centeredInputContainer}>
